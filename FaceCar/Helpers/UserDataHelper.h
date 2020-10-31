@@ -21,6 +21,7 @@
 + (UserDataHelper*__nonnull) shareInstance;
 
 @property(strong, nonatomic) NSNumber* _Nullable autoAccept;
+@property (nonatomic, assign) NSInteger countContract;
 - (void) saveUserToLocal :(FCDriver*__nonnull) client;
 - (FCDriver*__nullable) getCurrentUser;
 - (NSInteger) userId;

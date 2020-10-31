@@ -25,6 +25,7 @@ protocol WTWithDrawConfirmPresentableListener: class {
     var pointObser: Observable<Int?> {get}
     var userBank: Observable<UserBankInfo?>  { get }
     var balanceObs: Observable<DriverBalance> { get }
+    var itemTopUpCellModel: Observable<TopupCellModel> { get }
     func goToTransferPoint(pin: String, amount: Int)
     var eLoadingObser: Observable<(Bool,Double)> { get }
     var napasLoadingObser: Observable<(Bool, Double)> { get }
@@ -44,6 +45,7 @@ final class WTWithDrawConfirmVC: UIViewController, WTWithDrawConfirmPresentable,
     
     /// Class's public properties.
     weak var listener: WTWithDrawConfirmPresentableListener?
+    private var currentItem: TopupCellModel?
 
     // MARK: View's lifecycle
     override func viewDidLoad() {
@@ -138,6 +140,10 @@ private extension WTWithDrawConfirmVC {
     }
     
     private func setupRX() {
+        listener?.itemTopUpCellModel.bind(onNext: weakify({ (item, wSelf) in
+            wSelf.currentItem = item
+            })).disposed(by: disposeBag)
+        
         listener?.napasLoadingObser.bind(onNext: { (item) in
             if item.0 {
                 LoadingManager.instance.show()
@@ -225,7 +231,20 @@ private extension WTWithDrawConfirmVC {
     
     private func handleConfirm() {
         func typePinAndConfirm() {
-            self.isPin ? self.getPin() : self.listener?.showAlert(text: Text.needToCreatePw.localizedText)
+            switch self.confirmType{
+                case .TopUp:
+                    guard let item = self.currentItem, let p = self.point else {
+                        return
+                    }
+                    
+                    if item.card?.type == PaymentCardType.none {
+                        self.isPin ? self.getPin() : self.listener?.showAlert(text: Text.needToCreatePw.localizedText)
+                    } else {
+                        self.listener?.goToTransferPoint(pin: "pin", amount: p)
+                    }
+                case .WithDraw:
+                    self.isPin ? self.getPin() : self.listener?.showAlert(text: Text.needToCreatePw.localizedText)
+            }
         }
         
         switch confirmType {

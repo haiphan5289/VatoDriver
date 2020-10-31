@@ -213,7 +213,7 @@ private extension WebVC {
         btnClose.contentHorizontalAlignment = .left
         self.webView.backgroundColor = #colorLiteral(red: 0.8980392157, green: 0.8980392157, blue: 0.8980392157, alpha: 1)
         self.lblTitle.text = self.mTitle
-        self.containerHeader.backgroundColor = Color.orange
+        self.containerHeader.backgroundColor = #colorLiteral(red: 0, green: 0.3803921569, blue: 0.2392156863, alpha: 1)
         self.webView.scrollView.addSubview(self.refreshControl)
         self.noItemView.backgroundColor = #colorLiteral(red: 0.8980392157, green: 0.8980392157, blue: 0.8980392157, alpha: 1)
         self.webView.scrollView.backgroundColor = #colorLiteral(red: 0.8980392157, green: 0.8980392157, blue: 0.8980392157, alpha: 1)

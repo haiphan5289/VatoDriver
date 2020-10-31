@@ -22,6 +22,7 @@ protocol WTWithDrawConfirmRouting: ViewableRouting {
     
     func goToSuccess(_ info: (TopupCellModel?, Int?))
     func goToWDSuccess(_ info: BankTransactionInfo)
+    func showTopupNapas(htmlString: String, redirectUrl: String?)
 }
 
 protocol WTWithDrawConfirmPresentable: Presentable {
@@ -34,6 +35,21 @@ protocol WTWithDrawConfirmListener: class {
     // todo: Declare methods the interactor can invoke to communicate with other RIBs.
     func moveBackFromWithDrawConfirm()
     func moveBackSourceWallet()
+}
+
+struct TopUpAtmResponse: Codable {
+    var apiOperation: String?
+    var clientIp: String?
+    var dataKey: String?
+    var merchantId: String?
+    var napasKey: String?
+    var orderDetail: String?
+    var orderId: String?
+    var orderToken: String?
+    var redirectUrl: String?
+    var result: String?
+    var transactionId: String?
+    var html: String?
 }
 
 final class WTWithDrawConfirmInteractor: PresentableInteractor<WTWithDrawConfirmPresentable>, ActivityTrackingProgressProtocol {
@@ -53,6 +69,7 @@ final class WTWithDrawConfirmInteractor: PresentableInteractor<WTWithDrawConfirm
         self.topUpItem = topUpItem
         self.point = point
         self.balance = balance
+        self.currentItem = topUpItem
         super.init(presenter: presenter)
         presenter.listener = self
     }
@@ -71,6 +88,10 @@ final class WTWithDrawConfirmInteractor: PresentableInteractor<WTWithDrawConfirm
         if let item = self.item {
             mUserBank = item
         }
+        
+        if let currentItem = self.currentItem {
+            self.mCurrentItem = currentItem
+        }
         //
         // todo: Implement business logic here.
     }
@@ -81,6 +102,7 @@ final class WTWithDrawConfirmInteractor: PresentableInteractor<WTWithDrawConfirm
     }
 
     /// Class's private properties.
+    private var currentItem: TopupCellModel?
     private lazy var network = NetworkRequester(provider: NetworkTokenProvider(token: FirebaseTokenHelper.instance.eToken.filterNil()))
     @Replay(queue: MainScheduler.asyncInstance) private var mIsCheckPin: Bool
     private var isSubmitSuccessObs: PublishSubject<(Bool, String)> = PublishSubject.init()
@@ -88,6 +110,7 @@ final class WTWithDrawConfirmInteractor: PresentableInteractor<WTWithDrawConfirm
     @Replay(queue: MainScheduler.asyncInstance) private var mPoint: Int?
     @Replay(queue: MainScheduler.asyncInstance) private var mUserBank: UserBankInfo?
     @Replay(queue: MainScheduler.asyncInstance) private var mBalance: DriverBalance
+    @Replay(queue: MainScheduler.asyncInstance) private var mCurrentItem: TopupCellModel
     
     private var topUpItem: TopupCellModel?
     private var point: Int?
@@ -104,7 +127,10 @@ extension WTWithDrawConfirmInteractor: WTWithDrawConfirmInteractable {
 }
 
 // MARK: WTWithDrawConfirmPresentableListener's members
-extension WTWithDrawConfirmInteractor: WTWithDrawConfirmPresentableListener {
+extension WTWithDrawConfirmInteractor: WTWithDrawConfirmPresentableListener, Weakifiable {
+    var itemTopUpCellModel: Observable<TopupCellModel> {
+        return self.$mCurrentItem
+    }
     var eLoadingObser: Observable<(Bool, Double)> {
         return self.indicator.asObservable()
     }
@@ -161,7 +187,67 @@ extension WTWithDrawConfirmInteractor: WTWithDrawConfirmPresentableListener {
         }.disposeOnDeactivate(interactor: self)
     }
     
+    func processNapasPaymentSuccess() {
+        self.isSubmitSuccessObs.onNext((true, ""))
+    }
+    
+    func processNapasPaymentFailure(status: Int, message: String) {
+        self.router?.showAlertError(messageError: message)
+    }
+    
+    private func payWithNapas(_ amount: Int) {
+        let uuid = UIDevice.current.identifierForVendor?.uuidString ?? "ios_client_app"
+        var params: JSON = ["deviceId": "phone",
+                            "environment": "MobileApp",
+                            "description": "Driver mua điểm"]
+        
+        params["orderAmount"] = amount
+        params["cardScheme"] = self.currentItem?.card?.cardScheme
+        params["userId"] = UserManager.shared.getUserId()
+        params["tokenId"] = self.currentItem?.card?.id
+        params["deviceId"] = uuid
+        params["orderCurrency"] = "VND"
+        
+        let p: String
+        if let card = self.currentItem?.card, card.type == .atm  {
+            p = TOManageCommunication.Configs.url("/api/balance/napas/purchase_domestic_token")
+        } else {
+            p = TOManageCommunication.Configs.url("/api/balance/napas/purchase_international_token")
+        }
+        
+        let router = VatoAPIRouter.customPath(authToken: "",
+                                              path: p,
+                                              header: nil,
+                                              params: params,
+                                              useFullPath: true)
+        network.request(using: router,
+                        decodeTo: OptionalIgnoreMessageDTO<TopUpAtmResponse>.self,
+                        method: .post,
+                        encoding: JSONEncoding.default)
+            .trackProgressActivity(self.indicator)
+            .bind(onNext: weakify({ (result, wSelf) in
+                switch result {
+                case .success(let res):
+                    guard let i = res.data, let html = i.html else {
+                        if res.fail == false {
+                            wSelf.isSubmitSuccessObs.onNext((true, ""))
+                        } else {
+                            wSelf.router?.showAlertError(messageError: res.message ?? "")
+                        }
+                        return
+                    }
+                    wSelf.router?.showTopupNapas(htmlString: html, redirectUrl: nil)
+                case .failure(let e):
+                    wSelf.router?.showAlertError(messageError: e.localizedDescription)
+                }
+        })).disposeOnDeactivate(interactor: self)
+    }
+
     func goToTransferPoint(pin: String, amount: Int) {
+        if let card = self.currentItem?.card, card.type == .visa || card.type == .master || card.type == .atm  {
+            return payWithNapas(amount)
+        }
+        
         let p: [String : Any] = [
             "amount": amount,
             "pin": pin]

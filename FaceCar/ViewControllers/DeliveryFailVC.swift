@@ -42,10 +42,10 @@ enum DeliveryFailType: Int, CustomStringConvertible {
     
     var keyJson: String {
         switch self {
-            case .deliveryFail:
-                return "delivery_failed_reasons"
-            case .cancelBooking:
-                return "trip_canceled_reasons"
+        case .deliveryFail:
+            return "delivery_failed_reasons"
+        case .cancelBooking:
+            return "trip_canceled_reasons"
         }
     }
     
@@ -57,7 +57,7 @@ enum DeliveryFailType: Int, CustomStringConvertible {
 class DeliveryFailVC: UIViewController {
     
     private struct Config {
-      static let maximumPhoto = 3
+        static let maximumPhoto = 3
     }
     
     @objc var didSelectConfirm: ((_ param: [String: Any]) -> Void)?
@@ -110,7 +110,7 @@ class DeliveryFailVC: UIViewController {
         tagCellLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 13)
         
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: tagCellLayout)
-
+        
         collectionView.backgroundColor = .white
         collectionView.clipsToBounds = false
         collectionView.showsHorizontalScrollIndicator = false
@@ -123,7 +123,7 @@ class DeliveryFailVC: UIViewController {
                 make.bottom.equalTo(self.stackViewBottom.snp.top).inset(-16)
             })
         }
-
+        
         collectionView.register(AddImageCell.nib, forCellWithReuseIdentifier: "AddImageCell")
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -169,7 +169,7 @@ class DeliveryFailVC: UIViewController {
     func updateTypeViewController(with type: DeliveryFailType) {
         self.viewType = type
     }
-
+    
     // MARK: - Private methods
     private func setupNavigationBar() {
         UIApplication.setStatusBar(using: .lightContent)
@@ -202,25 +202,18 @@ class DeliveryFailVC: UIViewController {
             wSelf.btnConfirm.isEnabled = true
             wSelf.btnConfirm.backgroundColor = #colorLiteral(red: 0.937254902, green: 0.3215686275, blue: 0.1333333333, alpha: 1)
             
-            let count = wSelf.dataSource?.count ?? 0
-            if indexPath.row == count - 1 {
-                wSelf.contentTableView.tableFooterView = wSelf.viewFooter
-                wSelf.tfNote.becomeFirstResponder()
-                
-                if wSelf.tfNote.text == "" {
-                    wSelf.btnConfirm.isEnabled = false
-                    wSelf.btnConfirm.backgroundColor = #colorLiteral(red: 0.3882352941, green: 0.4470588235, blue: 0.5019607843, alpha: 1)
-                } else {
-                    wSelf.btnConfirm.isEnabled = true
-                    wSelf.btnConfirm.backgroundColor = #colorLiteral(red: 0.937254902, green: 0.3215686275, blue: 0.1333333333, alpha: 1)
-                }
+            let detail = wSelf.dataSource?[indexPath.row]
+
+            if detail?.showOtherReason ?? false {
+                wSelf.showViewFooter()
             }
         }.disposed(by: disposeBag)
         
         self.contentTableView.rx.itemDeselected.bind { [weak self] indexPath in
             guard let wSelf = self else { return }
-            let count = wSelf.dataSource?.count ?? 0
-            if indexPath.row == count - 1 {
+            
+            let detail = wSelf.dataSource?[indexPath.row]
+            if detail?.showOtherReason ?? false {
                 wSelf.contentTableView.tableFooterView = nil
                 wSelf.tfNote.resignFirstResponder()
             }
@@ -282,8 +275,8 @@ class DeliveryFailVC: UIViewController {
                     LoadingManager.instance.dismiss()
                 }
             }
-
-            }.disposed(by: disposeBag)
+            
+        }.disposed(by: disposeBag)
         
         setupKeyboardAnimation()
         
@@ -300,6 +293,18 @@ class DeliveryFailVC: UIViewController {
                 break
             }
         }.disposed(by: disposeBag)
+    }
+    func showViewFooter() {
+        self.contentTableView.tableFooterView = self.viewFooter
+        self.tfNote.becomeFirstResponder()
+        
+        if self.tfNote.text == "" {
+            self.btnConfirm.isEnabled = false
+            self.btnConfirm.backgroundColor = #colorLiteral(red: 0.3882352941, green: 0.4470588235, blue: 0.5019607843, alpha: 1)
+        } else {
+            self.btnConfirm.isEnabled = true
+            self.btnConfirm.backgroundColor = #colorLiteral(red: 0.937254902, green: 0.3215686275, blue: 0.1333333333, alpha: 1)
+        }
     }
     
     func requestData() {
@@ -397,7 +402,7 @@ extension DeliveryFailVC: UITableViewDataSource {
         }
         
         cell?.visulizeCell(with: dataSource?[indexPath.row].value)
-       
+        
         return cell!
     }
 }
@@ -485,21 +490,21 @@ extension DeliveryFailVC: UICollectionViewDataSource, UICollectionViewDelegate, 
             return
             
         }
-
+        
         if model.type == .addNew {
             self.showAlert()
         } else {
             let photos = self.listImage.compactMap { (model) -> AXPhoto? in
                 if let image = model.image {
-                  return AXPhoto(attributedTitle: nil, attributedDescription: nil, attributedCredit: nil, imageData: nil, image: image, url: nil)
+                    return AXPhoto(attributedTitle: nil, attributedDescription: nil, attributedCredit: nil, imageData: nil, image: image, url: nil)
                 }
                 return nil
             }
-
+            
             let cell = collectionView.cellForItem(at: indexPath) as? ImagePackageCell
             let transitionInfo = AXTransitionInfo(interactiveDismissalEnabled: true, startingView: cell?.imageView) { [weak self] (photo, index) -> UIImageView? in
                 guard let wself = self else { return nil }
-
+                
                 let indexPath = IndexPath(row: index, section: 0)
                 guard let cell = wself.collectionView.cellForItem(at: indexPath) as? ImagePackageCell else { return nil }
                 return cell.imageView
@@ -526,26 +531,26 @@ extension DeliveryFailVC: UICollectionViewDataSource, UICollectionViewDelegate, 
         }
     }
     func showAlert(){
-//        let alert: UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-//        let btPhoto: UIAlertAction = UIAlertAction(title: "Chọn hình từ thư viện", style: .default) { _ in
-//            self.showLibrary(action: .photoLibrary)
-//        }
-//        let btCamera: UIAlertAction = UIAlertAction(title: "Chọn hình từ Camera", style: .default) { _ in
-//            self.checkAuthorizeCamera {[weak self] (isAuthorize) in
-//                guard let self = self else { return }
-//                if isAuthorize {
-//                    self.showLibrary(action: .camera)
-//                } else {
-//                    AlertVC.showError(for: self, message: "Bạn cần cấp quyền mở camera để chụp hình.")
-//                }
-//            }
-//
-//        }
-//        let btCancel: UIAlertAction = UIAlertAction(title: "Huỷ", style: .cancel, handler: nil)
-//        alert.addAction(btPhoto)
-//        alert.addAction(btCamera)
-//        alert.addAction(btCancel)
-//        self.present(alert, animated: true, completion: nil)
+        //        let alert: UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        //        let btPhoto: UIAlertAction = UIAlertAction(title: "Chọn hình từ thư viện", style: .default) { _ in
+        //            self.showLibrary(action: .photoLibrary)
+        //        }
+        //        let btCamera: UIAlertAction = UIAlertAction(title: "Chọn hình từ Camera", style: .default) { _ in
+        //            self.checkAuthorizeCamera {[weak self] (isAuthorize) in
+        //                guard let self = self else { return }
+        //                if isAuthorize {
+        //                    self.showLibrary(action: .camera)
+        //                } else {
+        //                    AlertVC.showError(for: self, message: "Bạn cần cấp quyền mở camera để chụp hình.")
+        //                }
+        //            }
+        //
+        //        }
+        //        let btCancel: UIAlertAction = UIAlertAction(title: "Huỷ", style: .cancel, handler: nil)
+        //        alert.addAction(btPhoto)
+        //        alert.addAction(btCamera)
+        //        alert.addAction(btCancel)
+        //        self.present(alert, animated: true, completion: nil)
         self.checkAuthorizeCamera {[weak self] (isAuthorize) in
             guard let self = self else { return }
             if isAuthorize {
@@ -554,7 +559,7 @@ extension DeliveryFailVC: UICollectionViewDataSource, UICollectionViewDelegate, 
                 AlertVC.showError(for: self, message: "Bạn cần cấp quyền mở camera để chụp hình.")
             }
         }
-
+        
     }
     func showLibrary(action: UIImagePickerController.SourceType) {
         let pickerVC = UIImagePickerController()

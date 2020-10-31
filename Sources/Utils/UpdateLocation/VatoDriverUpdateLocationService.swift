@@ -23,9 +23,27 @@ final class VatoDriverUpdateLocationService: NSObject {
     @Replay(queue: SerialDispatchQueueScheduler.init(qos: .default)) private var updateLastOnlineMaxInterval: Int?
     private var disposeUpdateLocation: Disposable?
     private var disposeUpdateLocationTrip: Disposable?
+        
+    @VariableReplay private var _locations: [CLLocationCoordinate2D] = []
+    
+    var polylineInTrip: String {
+        let temp = _locations
+        let result = encodeCoordinates(temp)
+        return result
+    }
     
     private override init() {
         super.init()
+    }
+    
+    private func clearLocations() {
+        _locations = []
+    }
+    
+    private func updateCacheLocation(_ new: CLLocationCoordinate2D) {
+        var temp = _locations
+        temp.append(new)
+        _locations = temp
     }
     
     func syncCloud(location: CLLocationCoordinate2D) {
@@ -83,6 +101,7 @@ final class VatoDriverUpdateLocationService: NSObject {
         let p = inTrip ? "IntripDriverLocations" : "ReceiveDriverLocations"
         let tripRef = Firestore.firestore().document("Trip/\(tripId)").collection(p)
         disposeUpdateLocationTrip = updateLocation(e1: Observable.just(30), e2: Observable.just(10)) { (location) in
+            self.updateCacheLocation(location)
             let date = Date()
             let params: JSON = ["lat": location.latitude,
                                 "lon": location.longitude,
@@ -94,11 +113,13 @@ final class VatoDriverUpdateLocationService: NSObject {
     }
     
     func stopUpdate() {
+        clearLocations()
         disposeUpdateLocation?.dispose()
         disposeUpdateLocationTrip?.dispose()
     }
     
     func stopUpdateTripLocation() {
+        clearLocations()
         disposeUpdateLocationTrip?.dispose()
     }
 }

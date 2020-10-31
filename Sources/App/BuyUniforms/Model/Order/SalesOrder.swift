@@ -130,7 +130,7 @@ struct SalesOrder : Codable {
 	let baseDiscountCanceled : Int?
 	let baseDiscountInvoiced : Int?
 	let baseDiscountRefunded : Int?
-	let baseGrandTotal : Int?
+	let baseGrandTotal : Double?
 	let baseShippingAmount : Int?
 	let baseShippingCanceled : Int?
 	let baseShippingDiscountAmount : Int?
@@ -156,7 +156,7 @@ struct SalesOrder : Codable {
 	let discountDescription : String?
 	let discountInvoice : Int?
 	let discountRefunded : Int?
-	let grandTotal : Int?
+	let grandTotal : Double?
 	let codeShip : String?
     let addressStore : String?
 	let salesOrderAddress : [SalesOrderAddress]?
@@ -280,7 +280,7 @@ struct SalesOrder : Codable {
 		baseDiscountCanceled = try values.decodeIfPresent(Int.self, forKey: .baseDiscountCanceled)
 		baseDiscountInvoiced = try values.decodeIfPresent(Int.self, forKey: .baseDiscountInvoiced)
 		baseDiscountRefunded = try values.decodeIfPresent(Int.self, forKey: .baseDiscountRefunded)
-		baseGrandTotal = try values.decodeIfPresent(Int.self, forKey: .baseGrandTotal)
+		baseGrandTotal = try values.decodeIfPresent(Double.self, forKey: .baseGrandTotal)
 		baseShippingAmount = try values.decodeIfPresent(Int.self, forKey: .baseShippingAmount)
 		baseShippingCanceled = try values.decodeIfPresent(Int.self, forKey: .baseShippingCanceled)
 		baseShippingDiscountAmount = try values.decodeIfPresent(Int.self, forKey: .baseShippingDiscountAmount)
@@ -306,7 +306,7 @@ struct SalesOrder : Codable {
 		discountDescription = try values.decodeIfPresent(String.self, forKey: .discountDescription)
 		discountInvoice = try values.decodeIfPresent(Int.self, forKey: .discountInvoice)
 		discountRefunded = try values.decodeIfPresent(Int.self, forKey: .discountRefunded)
-		grandTotal = try values.decodeIfPresent(Int.self, forKey: .grandTotal)
+		grandTotal = try values.decodeIfPresent(Double.self, forKey: .grandTotal)
 		codeShip = try values.decodeIfPresent(String.self, forKey: .codeShip)
 		salesOrderAddress = try values.decodeIfPresent([SalesOrderAddress].self, forKey: .salesOrderAddress)
 		paymentAuthExpiration = try values.decodeIfPresent(Int.self, forKey: .paymentAuthExpiration)

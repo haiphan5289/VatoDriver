@@ -16,6 +16,8 @@ import RxSwift
 import FwiCoreRX
 import FwiCore
 import Atributika
+import KeyPathKit
+import Kingfisher
 
 // MARK: Helper
 protocol LoadXibProtocol {}
@@ -619,6 +621,16 @@ final class FireBaseTimeHelper:NSObject, SafeAccessProtocol {
     private (set) lazy var lock: NSRecursiveLock = NSRecursiveLock()
     private var diposeAble: Disposable?
     private var _currentTime: TimeInterval = 0
+    private var _offset: TimeInterval = 0
+    private (set) var offset: TimeInterval {
+        get {
+            return excute { _offset }
+        }
+        
+        set {
+            excute { _offset = newValue }
+        }
+    }
     var currentTime: TimeInterval {
         return self.excute(block: { _currentTime > 0 ? _currentTime : Date().toGMT().timeIntervalSince1970 * 1000 })
     }
@@ -668,7 +680,16 @@ extension Weakifiable {
         }
     }
 }
+protocol TaskExcuteProtocol {
+    var identifier: String { get }
+    func cancel()
+}
 
+extension DownloadTask: TaskExcuteProtocol {
+    var identifier: String {
+        return "DownloadTask"
+    }
+}
 extension UIViewController: Weakifiable {}
 
 func mainAsync<T>(block: ((T) -> ())?) -> (T) -> () {
@@ -793,6 +814,11 @@ extension String {
     }
     var htmlToString: String {
         return htmlToAttributedString?.string ?? ""
+    }
+    
+    static func makeStringWithoutEmpty(from others: String?..., seperator: String) -> String {
+        let new = others.compactMap { $0 }.filter(where: \.isEmpty == false).joined(separator: seperator)
+        return new
     }
 }
 

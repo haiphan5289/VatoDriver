@@ -58,6 +58,7 @@ enum FireBaseTable {
     case fareModifier
     case favoritePlace
     case driverOnline
+    case chats
 
     case custom(identify: String)
 
@@ -97,6 +98,8 @@ enum FireBaseTable {
             return "FavoritePlace"
         case .driverOnline:
             return "DriverOnline"
+        case .chats:
+                return "Chats"
         case .custom(let identify):
             return identify
         }

@@ -66,9 +66,10 @@ struct CancelModel: Codable {
     var extensionName: String?
     var id: Int?
     var serviceId: Int?
+    var active: Bool?
     
     static func otherReason() -> CancelModel {
-        return CancelModel(description: "Lý do khác", id: 0, serviceId: 0)
+        return CancelModel(description: "Lý do khác", id: -1, serviceId: 0)
     }
 }
 
@@ -119,6 +120,7 @@ final class FeedbackCancelResonInteractor: PresentableInteractor<FeedbackCancelR
     override func didBecomeActive() {
         super.didBecomeActive()
         setupRX()
+        
         switch self.type {
         case .cancelTrip, .deliveryShopFail:
             requestListReason()
@@ -146,8 +148,8 @@ final class FeedbackCancelResonInteractor: PresentableInteractor<FeedbackCancelR
             .observeOn(MainScheduler.asyncInstance)
             .trackProgressActivity(self.indicator)
             .subscribe(onNext: { [weak self] (r) in
-                self?.models = r.response.data ?? []
-                self?.models.append(CancelModel.otherReason())
+                guard let data = r.response.data else { return }
+                self?.sortOtherReason(data: data)
             }, onError: { [weak self] (e) in
                 self?.models = [CancelModel.otherReason()]
             }).disposeOnDeactivate(interactor: self)
@@ -162,7 +164,34 @@ final class FeedbackCancelResonInteractor: PresentableInteractor<FeedbackCancelR
             .trackProgressActivity(self.indicator)
             .subscribe(onNext: { [weak self] (d) in
                 let values = d?.compactMap { try? $0.decode(to: CancelModel.self) }
-                self?.models = values ?? []
+                self?.sortOtherReason(data: values ?? [])
+            }, onError: { [weak self] (e) in
+                self?.models = [CancelModel.otherReason()]
+            }).disposeOnDeactivate(interactor: self)
+    }
+    func sortOtherReason(data: [CancelModel]) {
+        var cancelItem: CancelModel?
+        for item in data {
+            if item.id != -1 {
+                self.models.append(item)
+            } else {
+                cancelItem = item
+            }
+        }
+        if let cancel = cancelItem {
+            self.models.append(cancel)
+        }
+    }
+    func getConfigOtherReson() {
+        let collectionRef = Firestore.firestore().collection(collection: .configData, .driver, .cancellationReasons)
+        let query = collectionRef.whereField("id", isEqualTo: -1)
+        query
+            .getDocuments()
+            .trackProgressActivity(self.indicator)
+            .subscribe(onNext: { [weak self] (d) in
+                guard (d?.compactMap({ try? $0.decode(to: CancelModel.self) }).first) != nil else {
+                    return
+                }
                 self?.models.append(CancelModel.otherReason())
             }, onError: { [weak self] (e) in
                 self?.models = [CancelModel.otherReason()]
@@ -179,8 +208,9 @@ final class FeedbackCancelResonInteractor: PresentableInteractor<FeedbackCancelR
              .observeOn(MainScheduler.asyncInstance)
              .trackProgressActivity(self.indicator)
              .subscribe(onNext: { [weak self] (r) in
-                 self?.models = r.response.data ?? []
-                 self?.models.append(CancelModel.otherReason())
+//                 self?.models = r.response.data ?? []
+//                self?.getConfigOtherReson()
+                self?.sortOtherReason(data: r.response.data ?? [])
              }, onError: { [weak self] (e) in
                  self?.models = [CancelModel.otherReason()]
              }).disposeOnDeactivate(interactor: self)
@@ -284,7 +314,7 @@ private extension FeedbackCancelResonInteractor {
             let model = models[safe: index],
             let specificId = model.id else { return }
         
-        let description = (specificId == CancelModel.otherReason().id) ? otherReason: model.description
+        let description = (specificId == CancelModel.otherReason().id ) ? otherReason: model.description
         
         let param = [
             "userId": userId,

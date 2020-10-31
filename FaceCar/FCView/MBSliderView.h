@@ -32,6 +32,7 @@ IB_DESIGNABLE
 
 - (void) setThumbColor:(UIColor *)color;
 + (MBSliderView *) createDefautTemplate;
+- (void)resetDefaultState;
 @end
 
 @protocol MBSliderViewDelegate <NSObject>

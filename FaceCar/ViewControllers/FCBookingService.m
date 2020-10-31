@@ -38,7 +38,7 @@
 #define kBookEstimate @"estimate"
 #define kBookExtra @"extra"
 #define kBookingTimeout 25
-
+extern NSString *DriverWantToCancelTripNotification;
 extern NSDate const* _Nullable expiredReceiveTrip;
 @import FirebaseAnalytics;
 @interface FCBookingService ()
@@ -50,7 +50,6 @@ extern NSDate const* _Nullable expiredReceiveTrip;
 @property (strong, nonatomic) TripListenNewTripManager *listenNewTrip;
 @property (strong, nonatomic) TripTrackingManager *tripTracking;
 @property (strong, nonatomic) RACSubject *updateCommand;
-
 @end
 
 @implementation FCBookingService {
@@ -82,6 +81,7 @@ static FCBookingService* instance = nil;
 
 - (void)setTripTracking:(TripTrackingManager *)tripTracking {
     _tripTracking = tripTracking;
+//    NSAssert(tripTracking != nil, @"Check");
 }
 
 - (void)setBook:(FCBooking *)book {
@@ -101,6 +101,7 @@ static FCBookingService* instance = nil;
         _refHistory = [[[FirebaseHelper shareInstance].ref child:TABLE_TRIP_HISTORY] child:uid];
         _appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
         self.updateCommand = [RACSubject new];
+        self.cachedDecision = [NSMutableDictionary new];
         // call for update
         // [self apiAddListTrip];
     }
@@ -113,6 +114,13 @@ static FCBookingService* instance = nil;
         [self.submitDataDisposable dispose];
         self.submitDataDisposable = nil;
     }
+}
+
+- (RACSignal *)changePaymentMethod {
+    if (_tripTracking) {
+        return [_tripTracking paymentMethodSignal];
+    }
+    return [RACSignal empty];
 }
 
 - (void) createDigitalBookingData {
@@ -400,6 +408,20 @@ static NSString *currentBookingId;
         if (lst_status == nil) {
             lst_status = [[NSMutableArray alloc] init];
         }
+        if (stt.status == BookStatusClientCancelIntrip) {
+            NSLog(@" Command status: listenerBookingStatusChange %ld", stt.status);
+             [lst_status addObject:stt];
+             NSArray* array = [lst_status sortedArrayUsingComparator:^NSComparisonResult(FCBookCommand* obj1,FCBookCommand* obj2) {
+                 return obj1.status > obj2.status;
+             }];
+             
+             self.book.command = [array copy];
+             
+             // callback
+             handler(stt);
+            return;
+        }
+        
         if (stt && ![self isExistStatus:stt.status]) {
             NSLog(@" Command status: listenerBookingStatusChange %ld", stt.status);
             [lst_status addObject:stt];
@@ -412,6 +434,7 @@ static NSString *currentBookingId;
             // callback
             handler(stt);
         }
+
     }];
 //    @try {
 //        FIRDatabaseReference* ref = [[_refTrip child:self.book.info.tripId] child:kBookStatus];
@@ -558,6 +581,20 @@ static NSString *currentBookingId;
     }
 }
 
+- (void)checkCanMoveHomeWhenDriverCancel: (FCBooking*) book {
+    NSString *tripId = book.info.tripId;
+    if ([tripId length] == 0) {
+        return;
+    }
+    if ([_cachedDecision objectForKey:tripId] == nil) {
+        return;
+    }
+    NSNumber *value = [NSNumber castFrom:[_cachedDecision objectForKey:tripId]];
+    BOOL remove = [value boolValue] == NO;
+    if (!remove) return;
+    [[NSNotificationCenter defaultCenter] postNotificationName:DriverWantToCancelTripNotification object:nil];
+}
+
 - (void) onHandlerNewBookStatus: (FCBookCommand*) newStatus
                            book: (FCBooking*) book {
     NSInteger statusCommand = newStatus.status;
@@ -578,6 +615,7 @@ static NSString *currentBookingId;
             }
         }
         else if ([self isDriverCanceled: book]) {
+            [self checkCanMoveHomeWhenDriverCancel:book];
             NSLog(@"Command status: Cancel");
         } else if ([self isBookStatusCompleted:book]) {
             if (_tripMapViewController) {
@@ -753,7 +791,10 @@ static NSString *currentBookingId;
 
 - (void) updateLastestBookingInfo: (FCBooking*) booking
                             block: (void (^)(NSError * error))block {
-    NSAssert(_tripTracking, @"Check logic");
+//    NSAssert(_tripTracking, @"Check logic");
+    if (!_tripTracking) {
+        self.tripTracking = [[TripTrackingManager alloc] init:booking.info.tripId];
+    }
     NSDictionary *dic = [booking.info toDictionary];
     if (!_tripTracking) {
         if (block) block(nil);
@@ -851,6 +892,9 @@ static NSString *currentBookingId;
             self.bookTrackingModel = nil;
         }
         
+        if (!tracking.polyline) {
+            tracking.polyline = [[VatoDriverUpdateLocationService shared] polylineInTrip];
+        }
         NSMutableDictionary* dict = [NSMutableDictionary dictionaryWithDictionary:[tracking toDictionary]];
         [dict addEntriesFromDictionary:@{@"d_timestamp": @([self getCurrentTimeStamp])}];
         NSAssert(_tripTracking, @"Check logic");
@@ -1242,6 +1286,7 @@ static NSString *currentBookingId;
  * - OK : Thoát khỏi chuyến đi -> xoá booking
  */
 - (void) processFinishedTrip: (FCBooking*) book {
+    [_cachedDecision removeAllObjects];
     if ([_lastestBooking isEqualToString:book.info.tripId]) {
         return;
     }

@@ -129,7 +129,9 @@
     @try {
         NSString *jsonString = self.embeddedPayload;
         NSData *data = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
-        id json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        if (!data) { return 0; }
+        NSError *err;
+        id json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&err];
         if ([json isKindOfClass:[NSDictionary class]]) {
             NSDictionary *dic = (NSDictionary *)json;
             NSInteger merchantFinalPrice = [dic[@"merchantFinalPrice"] integerValue];
@@ -145,7 +147,9 @@
     @try {
         NSString *jsonString = self.embeddedPayload;
         NSData *data = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
-        id json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        if (!data) { return 0; }
+        NSError *err;
+        id json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&err];
         if ([json isKindOfClass:[NSDictionary class]]) {
             NSDictionary *dic = (NSDictionary *)json;
             NSInteger discountAmount = [dic[@"discountAmount"] integerValue];

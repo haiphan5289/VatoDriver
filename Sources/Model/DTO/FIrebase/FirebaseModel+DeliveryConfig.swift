@@ -21,7 +21,12 @@ extension FirebaseModel {
     struct DeliveryReasonItem: Codable, ModelFromFireBaseProtocol {
         var id: Int?
         let value: String?
-        
+        var showOtherReason: Bool {
+            if id == -1 {
+                return true
+            }
+            return false
+        }
         /// Codable's keymap.
     }
     struct DriverOnlineStatus: Codable, ModelFromFireBaseProtocol {

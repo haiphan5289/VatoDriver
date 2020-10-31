@@ -15,14 +15,116 @@
 		18AEB4F31E5980B700EC7C80 /* FacecarNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AEB4F21E5980B700EC7C80 /* FacecarNavigationViewController.m */; };
 		18ECB2231DCC245600AFE8C2 /* SEFilterControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 18ECB2201DCC245600AFE8C2 /* SEFilterControl.m */; };
 		18ECB2241DCC245600AFE8C2 /* SEFilterKnob.m in Sources */ = {isa = PBXBuildFile; fileRef = 18ECB2221DCC245600AFE8C2 /* SEFilterKnob.m */; };
+		1B152C61250792E1005AB13F /* ConfigRentalCar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B152C60250792E1005AB13F /* ConfigRentalCar.swift */; };
+		1B152C62250792E1005AB13F /* ConfigRentalCar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B152C60250792E1005AB13F /* ConfigRentalCar.swift */; };
 		1B229B0524A9E7F20058E204 /* ConfigVisaATM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B229B0424A9E7F20058E204 /* ConfigVisaATM.swift */; };
 		1B229B0624A9E7F20058E204 /* ConfigVisaATM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B229B0424A9E7F20058E204 /* ConfigVisaATM.swift */; };
+		1B29B2792509CFC600A4753F /* ListCarContractVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B29B2722509CFC500A4753F /* ListCarContractVC.swift */; };
+		1B29B27A2509CFC600A4753F /* ListCarContractVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B29B2722509CFC500A4753F /* ListCarContractVC.swift */; };
+		1B29B27B2509CFC600A4753F /* ListCarContractBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B29B2732509CFC500A4753F /* ListCarContractBuilder.swift */; };
+		1B29B27C2509CFC600A4753F /* ListCarContractBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B29B2732509CFC500A4753F /* ListCarContractBuilder.swift */; };
+		1B29B27D2509CFC600A4753F /* ListCarContractInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B29B2742509CFC500A4753F /* ListCarContractInteractor.swift */; };
+		1B29B27E2509CFC600A4753F /* ListCarContractInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B29B2742509CFC500A4753F /* ListCarContractInteractor.swift */; };
+		1B29B27F2509CFC600A4753F /* CarContractVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B29B2752509CFC500A4753F /* CarContractVC.storyboard */; };
+		1B29B2802509CFC600A4753F /* CarContractVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B29B2752509CFC500A4753F /* CarContractVC.storyboard */; };
+		1B29B2812509CFC600A4753F /* ListCar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B29B2772509CFC500A4753F /* ListCar.swift */; };
+		1B29B2822509CFC600A4753F /* ListCar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B29B2772509CFC500A4753F /* ListCar.swift */; };
+		1B29B2832509CFC600A4753F /* ListCarContractRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B29B2782509CFC500A4753F /* ListCarContractRouter.swift */; };
+		1B29B2842509CFC600A4753F /* ListCarContractRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B29B2782509CFC500A4753F /* ListCarContractRouter.swift */; };
+		1B29B28D2509E13A00A4753F /* ListCarContractComponent+ContractDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B29B28C2509E13A00A4753F /* ListCarContractComponent+ContractDetail.swift */; };
+		1B29B28E2509E13A00A4753F /* ListCarContractComponent+ContractDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B29B28C2509E13A00A4753F /* ListCarContractComponent+ContractDetail.swift */; };
 		1B5D3CBE24B4C4F600F86A0A /* ViewShowService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5D3CBC24B4C4F600F86A0A /* ViewShowService.swift */; };
 		1B5D3CBF24B4C4F600F86A0A /* ViewShowService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5D3CBC24B4C4F600F86A0A /* ViewShowService.swift */; };
 		1B5D3CC024B4C4F600F86A0A /* ViewShowService.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B5D3CBD24B4C4F600F86A0A /* ViewShowService.xib */; };
 		1B5D3CC124B4C4F600F86A0A /* ViewShowService.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B5D3CBD24B4C4F600F86A0A /* ViewShowService.xib */; };
+		1B5E4A4024F9F4E2003D8BE6 /* ChatSream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5E4A3F24F9F4E2003D8BE6 /* ChatSream.swift */; };
+		1B5E4A4124F9F4E2003D8BE6 /* ChatSream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5E4A3F24F9F4E2003D8BE6 /* ChatSream.swift */; };
+		1B5E4A4324F9F52D003D8BE6 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5E4A4224F9F52D003D8BE6 /* ChatMessage.swift */; };
+		1B5E4A4424F9F52D003D8BE6 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5E4A4224F9F52D003D8BE6 /* ChatMessage.swift */; };
+		1B5E4A4924F9F6C0003D8BE6 /* ChatBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5E4A4524F9F6C0003D8BE6 /* ChatBuilder.swift */; };
+		1B5E4A4A24F9F6C0003D8BE6 /* ChatBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5E4A4524F9F6C0003D8BE6 /* ChatBuilder.swift */; };
+		1B5E4A4B24F9F6C0003D8BE6 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5E4A4624F9F6C0003D8BE6 /* ChatVC.swift */; };
+		1B5E4A4C24F9F6C0003D8BE6 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5E4A4624F9F6C0003D8BE6 /* ChatVC.swift */; };
+		1B5E4A4D24F9F6C0003D8BE6 /* ChatInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5E4A4724F9F6C0003D8BE6 /* ChatInteractor.swift */; };
+		1B5E4A4E24F9F6C0003D8BE6 /* ChatInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5E4A4724F9F6C0003D8BE6 /* ChatInteractor.swift */; };
+		1B5E4A4F24F9F6C0003D8BE6 /* ChatRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5E4A4824F9F6C0003D8BE6 /* ChatRouter.swift */; };
+		1B5E4A5024F9F6C0003D8BE6 /* ChatRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5E4A4824F9F6C0003D8BE6 /* ChatRouter.swift */; };
+		1B5E4A5224F9FE72003D8BE6 /* UserProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5E4A5124F9FE72003D8BE6 /* UserProtocol.swift */; };
+		1B5E4A5324F9FE72003D8BE6 /* UserProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5E4A5124F9FE72003D8BE6 /* UserProtocol.swift */; };
 		1B776BE024A303F800F25C44 /* ConfigManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B776BDF24A303F800F25C44 /* ConfigManager.swift */; };
 		1B776BE124A303F800F25C44 /* ConfigManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B776BDF24A303F800F25C44 /* ConfigManager.swift */; };
+		1BA7E6B924FBDED200F8A69D /* ArrowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA7E6B824FBDED200F8A69D /* ArrowView.swift */; };
+		1BA7E6BA24FBDED200F8A69D /* ArrowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA7E6B824FBDED200F8A69D /* ArrowView.swift */; };
+		1BA7E6BD24FBE1C000F8A69D /* ContractDetailComponent+Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA7E6BC24FBE1C000F8A69D /* ContractDetailComponent+Chat.swift */; };
+		1BA7E6BE24FBE1C000F8A69D /* ContractDetailComponent+Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA7E6BC24FBE1C000F8A69D /* ContractDetailComponent+Chat.swift */; };
+		1BA7E6C124FCA82500F8A69D /* FirebaseUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA7E6C024FCA82500F8A69D /* FirebaseUser.swift */; };
+		1BA7E6C224FCA82500F8A69D /* FirebaseUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA7E6C024FCA82500F8A69D /* FirebaseUser.swift */; };
+		1BA7E6C924FCB1C800F8A69D /* CCChatWithVatoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BA7E6C424FCB1C800F8A69D /* CCChatWithVatoVC.xib */; };
+		1BA7E6CA24FCB1C800F8A69D /* CCChatWithVatoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BA7E6C424FCB1C800F8A69D /* CCChatWithVatoVC.xib */; };
+		1BA7E6CB24FCB1C800F8A69D /* CCChatWithVatoRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA7E6C524FCB1C800F8A69D /* CCChatWithVatoRouter.swift */; };
+		1BA7E6CC24FCB1C800F8A69D /* CCChatWithVatoRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA7E6C524FCB1C800F8A69D /* CCChatWithVatoRouter.swift */; };
+		1BA7E6CD24FCB1C800F8A69D /* CCChatWithVatoBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA7E6C624FCB1C800F8A69D /* CCChatWithVatoBuilder.swift */; };
+		1BA7E6CE24FCB1C800F8A69D /* CCChatWithVatoBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA7E6C624FCB1C800F8A69D /* CCChatWithVatoBuilder.swift */; };
+		1BA7E6CF24FCB1C800F8A69D /* CCChatWithVatoInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA7E6C724FCB1C800F8A69D /* CCChatWithVatoInteractor.swift */; };
+		1BA7E6D024FCB1C800F8A69D /* CCChatWithVatoInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA7E6C724FCB1C800F8A69D /* CCChatWithVatoInteractor.swift */; };
+		1BA7E6D124FCB1C800F8A69D /* CCChatWithVatoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA7E6C824FCB1C800F8A69D /* CCChatWithVatoVC.swift */; };
+		1BA7E6D224FCB1C800F8A69D /* CCChatWithVatoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA7E6C824FCB1C800F8A69D /* CCChatWithVatoVC.swift */; };
+		1BA7E6D424FCB2FC00F8A69D /* CarContractComponent+CCChatWithVato.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA7E6D324FCB2FC00F8A69D /* CarContractComponent+CCChatWithVato.swift */; };
+		1BA7E6D524FCB2FC00F8A69D /* CarContractComponent+CCChatWithVato.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA7E6D324FCB2FC00F8A69D /* CarContractComponent+CCChatWithVato.swift */; };
+		1BA7E6D924FCB5A200F8A69D /* CCChatWithVatoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA7E6D724FCB5A200F8A69D /* CCChatWithVatoCell.swift */; };
+		1BA7E6DA24FCB5A200F8A69D /* CCChatWithVatoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA7E6D724FCB5A200F8A69D /* CCChatWithVatoCell.swift */; };
+		1BA7E6DB24FCB5A200F8A69D /* CCChatWithVatoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BA7E6D824FCB5A200F8A69D /* CCChatWithVatoCell.xib */; };
+		1BA7E6DC24FCB5A200F8A69D /* CCChatWithVatoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BA7E6D824FCB5A200F8A69D /* CCChatWithVatoCell.xib */; };
+		1BA7E6DF24FCE5C800F8A69D /* OrderContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA7E6DE24FCE5C800F8A69D /* OrderContract.swift */; };
+		1BA7E6E024FCE5C800F8A69D /* OrderContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA7E6DE24FCE5C800F8A69D /* OrderContract.swift */; };
+		1BA7E6E724FCF14100F8A69D /* ReceiptCarContractVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BA7E6E224FCF14000F8A69D /* ReceiptCarContractVC.xib */; };
+		1BA7E6E824FCF14100F8A69D /* ReceiptCarContractVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BA7E6E224FCF14000F8A69D /* ReceiptCarContractVC.xib */; };
+		1BA7E6E924FCF14100F8A69D /* ReceiptCarContractRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA7E6E324FCF14000F8A69D /* ReceiptCarContractRouter.swift */; };
+		1BA7E6EA24FCF14100F8A69D /* ReceiptCarContractRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA7E6E324FCF14000F8A69D /* ReceiptCarContractRouter.swift */; };
+		1BA7E6EB24FCF14100F8A69D /* ReceiptCarContractBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA7E6E424FCF14100F8A69D /* ReceiptCarContractBuilder.swift */; };
+		1BA7E6EC24FCF14100F8A69D /* ReceiptCarContractBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA7E6E424FCF14100F8A69D /* ReceiptCarContractBuilder.swift */; };
+		1BA7E6ED24FCF14100F8A69D /* ReceiptCarContractInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA7E6E524FCF14100F8A69D /* ReceiptCarContractInteractor.swift */; };
+		1BA7E6EE24FCF14100F8A69D /* ReceiptCarContractInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA7E6E524FCF14100F8A69D /* ReceiptCarContractInteractor.swift */; };
+		1BA7E6EF24FCF14100F8A69D /* ReceiptCarContractVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA7E6E624FCF14100F8A69D /* ReceiptCarContractVC.swift */; };
+		1BA7E6F024FCF14100F8A69D /* ReceiptCarContractVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA7E6E624FCF14100F8A69D /* ReceiptCarContractVC.swift */; };
+		1BA7E6F224FCF1F000F8A69D /* ContractDetailComponent+ReceiptCarContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA7E6F124FCF1F000F8A69D /* ContractDetailComponent+ReceiptCarContract.swift */; };
+		1BA7E6F324FCF1F000F8A69D /* ContractDetailComponent+ReceiptCarContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA7E6F124FCF1F000F8A69D /* ContractDetailComponent+ReceiptCarContract.swift */; };
+		1BA7E6F624FCF47F00F8A69D /* DetailPriceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA7E6F524FCF47F00F8A69D /* DetailPriceView.swift */; };
+		1BA7E6F724FCF47F00F8A69D /* DetailPriceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA7E6F524FCF47F00F8A69D /* DetailPriceView.swift */; };
+		1BBBF6E724F764CE0016E6AB /* WalletAccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBBF6E624F764CE0016E6AB /* WalletAccountCell.swift */; };
+		1BBBF6E824F764CE0016E6AB /* WalletAccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBBF6E624F764CE0016E6AB /* WalletAccountCell.swift */; };
+		1BBBF6F024F8A4900016E6AB /* CarContractObjcWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBBF6EF24F8A48F0016E6AB /* CarContractObjcWrapper.swift */; };
+		1BBBF6F124F8A4900016E6AB /* CarContractObjcWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBBF6EF24F8A48F0016E6AB /* CarContractObjcWrapper.swift */; };
+		1BBBF6F724F8A5440016E6AB /* CarContractVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BBBF6F224F8A5440016E6AB /* CarContractVC.xib */; };
+		1BBBF6F824F8A5440016E6AB /* CarContractVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BBBF6F224F8A5440016E6AB /* CarContractVC.xib */; };
+		1BBBF6F924F8A5440016E6AB /* CarContractRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBBF6F324F8A5440016E6AB /* CarContractRouter.swift */; };
+		1BBBF6FA24F8A5440016E6AB /* CarContractRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBBF6F324F8A5440016E6AB /* CarContractRouter.swift */; };
+		1BBBF6FB24F8A5440016E6AB /* CarContractBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBBF6F424F8A5440016E6AB /* CarContractBuilder.swift */; };
+		1BBBF6FC24F8A5440016E6AB /* CarContractBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBBF6F424F8A5440016E6AB /* CarContractBuilder.swift */; };
+		1BBBF6FD24F8A5440016E6AB /* CarContractInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBBF6F524F8A5440016E6AB /* CarContractInteractor.swift */; };
+		1BBBF6FE24F8A5440016E6AB /* CarContractInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBBF6F524F8A5440016E6AB /* CarContractInteractor.swift */; };
+		1BBBF6FF24F8A5440016E6AB /* CarContractVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBBF6F624F8A5440016E6AB /* CarContractVC.swift */; };
+		1BBBF70024F8A5440016E6AB /* CarContractVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBBF6F624F8A5440016E6AB /* CarContractVC.swift */; };
+		1BBBF70E24F8B89D0016E6AB /* CarContractView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBBF70C24F8B89D0016E6AB /* CarContractView.swift */; };
+		1BBBF70F24F8B89D0016E6AB /* CarContractView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBBF70C24F8B89D0016E6AB /* CarContractView.swift */; };
+		1BBBF71024F8B89D0016E6AB /* CarContractView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BBBF70D24F8B89D0016E6AB /* CarContractView.xib */; };
+		1BBBF71124F8B89D0016E6AB /* CarContractView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BBBF70D24F8B89D0016E6AB /* CarContractView.xib */; };
+		1BBBF71524F8BCC60016E6AB /* CarContractCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBBF71324F8BCC60016E6AB /* CarContractCell.swift */; };
+		1BBBF71624F8BCC60016E6AB /* CarContractCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBBF71324F8BCC60016E6AB /* CarContractCell.swift */; };
+		1BBBF71724F8BCC60016E6AB /* CarContractCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BBBF71424F8BCC60016E6AB /* CarContractCell.xib */; };
+		1BBBF71824F8BCC60016E6AB /* CarContractCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BBBF71424F8BCC60016E6AB /* CarContractCell.xib */; };
+		1BBBF71F24F8EEA70016E6AB /* ContractDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BBBF71A24F8EEA70016E6AB /* ContractDetailVC.xib */; };
+		1BBBF72024F8EEA80016E6AB /* ContractDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BBBF71A24F8EEA70016E6AB /* ContractDetailVC.xib */; };
+		1BBBF72124F8EEA80016E6AB /* ContractDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBBF71B24F8EEA70016E6AB /* ContractDetailRouter.swift */; };
+		1BBBF72224F8EEA80016E6AB /* ContractDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBBF71B24F8EEA70016E6AB /* ContractDetailRouter.swift */; };
+		1BBBF72324F8EEA80016E6AB /* ContractDetailBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBBF71C24F8EEA70016E6AB /* ContractDetailBuilder.swift */; };
+		1BBBF72424F8EEA80016E6AB /* ContractDetailBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBBF71C24F8EEA70016E6AB /* ContractDetailBuilder.swift */; };
+		1BBBF72524F8EEA80016E6AB /* ContractDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBBF71D24F8EEA70016E6AB /* ContractDetailInteractor.swift */; };
+		1BBBF72624F8EEA80016E6AB /* ContractDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBBF71D24F8EEA70016E6AB /* ContractDetailInteractor.swift */; };
+		1BBBF72724F8EEA80016E6AB /* ContractDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBBF71E24F8EEA70016E6AB /* ContractDetailVC.swift */; };
+		1BBBF72824F8EEA80016E6AB /* ContractDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBBF71E24F8EEA70016E6AB /* ContractDetailVC.swift */; };
+		1BBBF72B24F8F0A60016E6AB /* CarContractComponent+ContractDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBBF72A24F8F0A60016E6AB /* CarContractComponent+ContractDetail.swift */; };
+		1BBBF72C24F8F0A60016E6AB /* CarContractComponent+ContractDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBBF72A24F8F0A60016E6AB /* CarContractComponent+ContractDetail.swift */; };
 		4703C9EF1D23EB3C0008C724 /* FCSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 4703C9EE1D23EB3C0008C724 /* FCSetting.m */; };
 		4703F5491D0B15BD00DD3A28 /* CarTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4703F5481D0B15BD00DD3A28 /* CarTypeViewController.m */; };
 		4704CAA11D0C80D600D2886A /* FCFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4704CAA01D0C80D600D2886A /* FCFilter.m */; };
@@ -392,6 +494,8 @@
 		681F68472472686B00D9BC5E /* WalletVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681F683F2472686B00D9BC5E /* WalletVC.swift */; };
 		681F684A2472706900D9BC5E /* WalletTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681F68492472706900D9BC5E /* WalletTableCell.swift */; };
 		681F684B2472706900D9BC5E /* WalletTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681F68492472706900D9BC5E /* WalletTableCell.swift */; };
+		681F8F1A250690BC00E32CFA /* Polyline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681F8F19250690BC00E32CFA /* Polyline.swift */; };
+		681F8F1B250690BC00E32CFA /* Polyline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681F8F19250690BC00E32CFA /* Polyline.swift */; };
 		68228FFD24AAA574006DF9DC /* VatoDriverUpdateLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68228FFC24AAA574006DF9DC /* VatoDriverUpdateLocationService.swift */; };
 		68228FFE24AAA574006DF9DC /* VatoDriverUpdateLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68228FFC24AAA574006DF9DC /* VatoDriverUpdateLocationService.swift */; };
 		6829776E23FE3BA500155C78 /* LabelVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6829776D23FE3BA500155C78 /* LabelVersion.swift */; };
@@ -436,6 +540,8 @@
 		682B67802424B8B00007D3D2 /* DestinationInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 682B677E2424B8B00007D3D2 /* DestinationInfoView.xib */; };
 		682B67822424B8C80007D3D2 /* DestinationInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682B67812424B8C80007D3D2 /* DestinationInfoView.swift */; };
 		682B67832424B8C80007D3D2 /* DestinationInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682B67812424B8C80007D3D2 /* DestinationInfoView.swift */; };
+		683D13C3250F71FC008D09FE /* RequireProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683D13C2250F71FC008D09FE /* RequireProtocol.swift */; };
+		683D13C4250F71FC008D09FE /* RequireProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683D13C2250F71FC008D09FE /* RequireProtocol.swift */; };
 		68407F1624599C610004268E /* ParamsArrayEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68407F1524599C5E0004268E /* ParamsArrayEncoding.swift */; };
 		68407F1724599C630004268E /* ParamsArrayEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68407F1524599C5E0004268E /* ParamsArrayEncoding.swift */; };
 		68413B3A24221A680027A7A8 /* SetLocationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68413B2524221A680027A7A8 /* SetLocationInteractor.swift */; };
@@ -582,6 +688,12 @@
 		68DCC6C62397D17200F63BDD /* FirebaseTokenHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DCC6C42397D17200F63BDD /* FirebaseTokenHelper.swift */; };
 		68DFE15D24037AD00036E6C8 /* DriverProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DFE15C24037AD00036E6C8 /* DriverProtocol.swift */; };
 		68DFE15E24037AD00036E6C8 /* DriverProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DFE15C24037AD00036E6C8 /* DriverProtocol.swift */; };
+		68EA52F324ED1914001D55DE /* VatoBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68EA52F224ED1914001D55DE /* VatoBannerView.swift */; };
+		68EA52F524ED1945001D55DE /* VatoAutoScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68EA52F424ED1945001D55DE /* VatoAutoScrollView.swift */; };
+		68EA52F624ED1945001D55DE /* VatoAutoScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68EA52F424ED1945001D55DE /* VatoAutoScrollView.swift */; };
+		68EA52F724ED194B001D55DE /* VatoBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68EA52F224ED1914001D55DE /* VatoBannerView.swift */; };
+		68EA52FA24ED1AEC001D55DE /* HomeItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68EA52F924ED1AEC001D55DE /* HomeItemModel.swift */; };
+		68EA52FB24ED1AEC001D55DE /* HomeItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68EA52F924ED1AEC001D55DE /* HomeItemModel.swift */; };
 		68FEDD8924343E5E00409988 /* SwitchPaymentRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68FEDD8324343E5D00409988 /* SwitchPaymentRouter.swift */; };
 		68FEDD8A24343E5E00409988 /* SwitchPaymentRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68FEDD8324343E5D00409988 /* SwitchPaymentRouter.swift */; };
 		68FEDD8D24343E5E00409988 /* SwitchPaymentBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68FEDD8624343E5D00409988 /* SwitchPaymentBuilder.swift */; };
@@ -1795,10 +1907,61 @@
 		18ECB2201DCC245600AFE8C2 /* SEFilterControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SEFilterControl.m; sourceTree = "<group>"; };
 		18ECB2211DCC245600AFE8C2 /* SEFilterKnob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SEFilterKnob.h; sourceTree = "<group>"; };
 		18ECB2221DCC245600AFE8C2 /* SEFilterKnob.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SEFilterKnob.m; sourceTree = "<group>"; };
+		1B152C60250792E1005AB13F /* ConfigRentalCar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigRentalCar.swift; sourceTree = "<group>"; };
 		1B229B0424A9E7F20058E204 /* ConfigVisaATM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigVisaATM.swift; sourceTree = "<group>"; };
+		1B29B2722509CFC500A4753F /* ListCarContractVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListCarContractVC.swift; sourceTree = "<group>"; };
+		1B29B2732509CFC500A4753F /* ListCarContractBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListCarContractBuilder.swift; sourceTree = "<group>"; };
+		1B29B2742509CFC500A4753F /* ListCarContractInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListCarContractInteractor.swift; sourceTree = "<group>"; };
+		1B29B2752509CFC500A4753F /* CarContractVC.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CarContractVC.storyboard; sourceTree = "<group>"; };
+		1B29B2772509CFC500A4753F /* ListCar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListCar.swift; sourceTree = "<group>"; };
+		1B29B2782509CFC500A4753F /* ListCarContractRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListCarContractRouter.swift; sourceTree = "<group>"; };
+		1B29B28C2509E13A00A4753F /* ListCarContractComponent+ContractDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListCarContractComponent+ContractDetail.swift"; sourceTree = "<group>"; };
 		1B5D3CBC24B4C4F600F86A0A /* ViewShowService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewShowService.swift; sourceTree = "<group>"; };
 		1B5D3CBD24B4C4F600F86A0A /* ViewShowService.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewShowService.xib; sourceTree = "<group>"; };
+		1B5E4A3F24F9F4E2003D8BE6 /* ChatSream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSream.swift; sourceTree = "<group>"; };
+		1B5E4A4224F9F52D003D8BE6 /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
+		1B5E4A4524F9F6C0003D8BE6 /* ChatBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatBuilder.swift; sourceTree = "<group>"; };
+		1B5E4A4624F9F6C0003D8BE6 /* ChatVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
+		1B5E4A4724F9F6C0003D8BE6 /* ChatInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatInteractor.swift; sourceTree = "<group>"; };
+		1B5E4A4824F9F6C0003D8BE6 /* ChatRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatRouter.swift; sourceTree = "<group>"; };
+		1B5E4A5124F9FE72003D8BE6 /* UserProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProtocol.swift; sourceTree = "<group>"; };
 		1B776BDF24A303F800F25C44 /* ConfigManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigManager.swift; sourceTree = "<group>"; };
+		1BA7E6B824FBDED200F8A69D /* ArrowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrowView.swift; sourceTree = "<group>"; };
+		1BA7E6BC24FBE1C000F8A69D /* ContractDetailComponent+Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContractDetailComponent+Chat.swift"; sourceTree = "<group>"; };
+		1BA7E6C024FCA82500F8A69D /* FirebaseUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUser.swift; sourceTree = "<group>"; };
+		1BA7E6C424FCB1C800F8A69D /* CCChatWithVatoVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CCChatWithVatoVC.xib; sourceTree = "<group>"; };
+		1BA7E6C524FCB1C800F8A69D /* CCChatWithVatoRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCChatWithVatoRouter.swift; sourceTree = "<group>"; };
+		1BA7E6C624FCB1C800F8A69D /* CCChatWithVatoBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCChatWithVatoBuilder.swift; sourceTree = "<group>"; };
+		1BA7E6C724FCB1C800F8A69D /* CCChatWithVatoInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCChatWithVatoInteractor.swift; sourceTree = "<group>"; };
+		1BA7E6C824FCB1C800F8A69D /* CCChatWithVatoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCChatWithVatoVC.swift; sourceTree = "<group>"; };
+		1BA7E6D324FCB2FC00F8A69D /* CarContractComponent+CCChatWithVato.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CarContractComponent+CCChatWithVato.swift"; sourceTree = "<group>"; };
+		1BA7E6D724FCB5A200F8A69D /* CCChatWithVatoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCChatWithVatoCell.swift; sourceTree = "<group>"; };
+		1BA7E6D824FCB5A200F8A69D /* CCChatWithVatoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CCChatWithVatoCell.xib; sourceTree = "<group>"; };
+		1BA7E6DE24FCE5C800F8A69D /* OrderContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderContract.swift; sourceTree = "<group>"; };
+		1BA7E6E224FCF14000F8A69D /* ReceiptCarContractVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReceiptCarContractVC.xib; sourceTree = "<group>"; };
+		1BA7E6E324FCF14000F8A69D /* ReceiptCarContractRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptCarContractRouter.swift; sourceTree = "<group>"; };
+		1BA7E6E424FCF14100F8A69D /* ReceiptCarContractBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptCarContractBuilder.swift; sourceTree = "<group>"; };
+		1BA7E6E524FCF14100F8A69D /* ReceiptCarContractInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptCarContractInteractor.swift; sourceTree = "<group>"; };
+		1BA7E6E624FCF14100F8A69D /* ReceiptCarContractVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptCarContractVC.swift; sourceTree = "<group>"; };
+		1BA7E6F124FCF1F000F8A69D /* ContractDetailComponent+ReceiptCarContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContractDetailComponent+ReceiptCarContract.swift"; sourceTree = "<group>"; };
+		1BA7E6F524FCF47F00F8A69D /* DetailPriceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPriceView.swift; sourceTree = "<group>"; };
+		1BBBF6E624F764CE0016E6AB /* WalletAccountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletAccountCell.swift; sourceTree = "<group>"; };
+		1BBBF6EF24F8A48F0016E6AB /* CarContractObjcWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarContractObjcWrapper.swift; sourceTree = "<group>"; };
+		1BBBF6F224F8A5440016E6AB /* CarContractVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarContractVC.xib; sourceTree = "<group>"; };
+		1BBBF6F324F8A5440016E6AB /* CarContractRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarContractRouter.swift; sourceTree = "<group>"; };
+		1BBBF6F424F8A5440016E6AB /* CarContractBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarContractBuilder.swift; sourceTree = "<group>"; };
+		1BBBF6F524F8A5440016E6AB /* CarContractInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarContractInteractor.swift; sourceTree = "<group>"; };
+		1BBBF6F624F8A5440016E6AB /* CarContractVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarContractVC.swift; sourceTree = "<group>"; };
+		1BBBF70C24F8B89D0016E6AB /* CarContractView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarContractView.swift; sourceTree = "<group>"; };
+		1BBBF70D24F8B89D0016E6AB /* CarContractView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarContractView.xib; sourceTree = "<group>"; };
+		1BBBF71324F8BCC60016E6AB /* CarContractCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarContractCell.swift; sourceTree = "<group>"; };
+		1BBBF71424F8BCC60016E6AB /* CarContractCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarContractCell.xib; sourceTree = "<group>"; };
+		1BBBF71A24F8EEA70016E6AB /* ContractDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContractDetailVC.xib; sourceTree = "<group>"; };
+		1BBBF71B24F8EEA70016E6AB /* ContractDetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractDetailRouter.swift; sourceTree = "<group>"; };
+		1BBBF71C24F8EEA70016E6AB /* ContractDetailBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractDetailBuilder.swift; sourceTree = "<group>"; };
+		1BBBF71D24F8EEA70016E6AB /* ContractDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractDetailInteractor.swift; sourceTree = "<group>"; };
+		1BBBF71E24F8EEA70016E6AB /* ContractDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractDetailVC.swift; sourceTree = "<group>"; };
+		1BBBF72A24F8F0A60016E6AB /* CarContractComponent+ContractDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CarContractComponent+ContractDetail.swift"; sourceTree = "<group>"; };
 		2E5349FD10231DA3BCCF64E2 /* Pods_FC_DEV.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FC_DEV.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4054E0F665B06C07542259EF /* Pods_FC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4703C9ED1D23EB3C0008C724 /* FCSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSetting.h; sourceTree = "<group>"; };
@@ -2045,6 +2208,7 @@
 		681F683E2472686B00D9BC5E /* WalletInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletInteractor.swift; sourceTree = "<group>"; };
 		681F683F2472686B00D9BC5E /* WalletVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletVC.swift; sourceTree = "<group>"; };
 		681F68492472706900D9BC5E /* WalletTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTableCell.swift; sourceTree = "<group>"; };
+		681F8F19250690BC00E32CFA /* Polyline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Polyline.swift; sourceTree = "<group>"; };
 		68228FFC24AAA574006DF9DC /* VatoDriverUpdateLocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VatoDriverUpdateLocationService.swift; sourceTree = "<group>"; };
 		6829776D23FE3BA500155C78 /* LabelVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelVersion.swift; sourceTree = "<group>"; };
 		6829777323FE3F6800155C78 /* TOShortcutComponent+TOOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TOShortcutComponent+TOOrder.swift"; sourceTree = "<group>"; };
@@ -2067,6 +2231,7 @@
 		682B67742424B38D0007D3D2 /* AddDestinationConfirmVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDestinationConfirmVC.swift; sourceTree = "<group>"; };
 		682B677E2424B8B00007D3D2 /* DestinationInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DestinationInfoView.xib; sourceTree = "<group>"; };
 		682B67812424B8C80007D3D2 /* DestinationInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationInfoView.swift; sourceTree = "<group>"; };
+		683D13C2250F71FC008D09FE /* RequireProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequireProtocol.swift; sourceTree = "<group>"; };
 		68407F1524599C5E0004268E /* ParamsArrayEncoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParamsArrayEncoding.swift; sourceTree = "<group>"; };
 		68413B2524221A680027A7A8 /* SetLocationInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetLocationInteractor.swift; sourceTree = "<group>"; };
 		68413B2724221A680027A7A8 /* SetLocationComponent+LocationPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SetLocationComponent+LocationPicker.swift"; sourceTree = "<group>"; };
@@ -2148,6 +2313,9 @@
 		68CB5F1D23570F5000B7D704 /* FCBookingService+UpdateStatus.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "FCBookingService+UpdateStatus.m"; sourceTree = "<group>"; };
 		68DCC6C42397D17200F63BDD /* FirebaseTokenHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseTokenHelper.swift; sourceTree = "<group>"; };
 		68DFE15C24037AD00036E6C8 /* DriverProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverProtocol.swift; sourceTree = "<group>"; };
+		68EA52F224ED1914001D55DE /* VatoBannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VatoBannerView.swift; sourceTree = "<group>"; };
+		68EA52F424ED1945001D55DE /* VatoAutoScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VatoAutoScrollView.swift; sourceTree = "<group>"; };
+		68EA52F924ED1AEC001D55DE /* HomeItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeItemModel.swift; sourceTree = "<group>"; };
 		68FEDD8324343E5D00409988 /* SwitchPaymentRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchPaymentRouter.swift; sourceTree = "<group>"; };
 		68FEDD8624343E5D00409988 /* SwitchPaymentBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchPaymentBuilder.swift; sourceTree = "<group>"; };
 		68FEDD8724343E5D00409988 /* SwitchPaymentInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchPaymentInteractor.swift; sourceTree = "<group>"; };
@@ -2999,6 +3167,36 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		1B29B2712509CFC500A4753F /* ListContract */ = {
+			isa = PBXGroup;
+			children = (
+				1B29B2852509E0B600A4753F /* Extension */,
+				1B29B2762509CFC500A4753F /* View */,
+				1B29B2722509CFC500A4753F /* ListCarContractVC.swift */,
+				1B29B2732509CFC500A4753F /* ListCarContractBuilder.swift */,
+				1B29B2742509CFC500A4753F /* ListCarContractInteractor.swift */,
+				1B29B2752509CFC500A4753F /* CarContractVC.storyboard */,
+				1B29B2782509CFC500A4753F /* ListCarContractRouter.swift */,
+			);
+			path = ListContract;
+			sourceTree = "<group>";
+		};
+		1B29B2762509CFC500A4753F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1B29B2772509CFC500A4753F /* ListCar.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1B29B2852509E0B600A4753F /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				1B29B28C2509E13A00A4753F /* ListCarContractComponent+ContractDetail.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		1B5D3CB524B4939400F86A0A /* ViewShowService */ = {
 			isa = PBXGroup;
 			children = (
@@ -3006,6 +3204,160 @@
 				1B5D3CBD24B4C4F600F86A0A /* ViewShowService.xib */,
 			);
 			name = ViewShowService;
+			sourceTree = "<group>";
+		};
+		1B5E4A3D24F9F4B7003D8BE6 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				1BA7E6BF24FCA81400F8A69D /* Model */,
+				1B5E4A4524F9F6C0003D8BE6 /* ChatBuilder.swift */,
+				1B5E4A4724F9F6C0003D8BE6 /* ChatInteractor.swift */,
+				1B5E4A4824F9F6C0003D8BE6 /* ChatRouter.swift */,
+				1B5E4A4624F9F6C0003D8BE6 /* ChatVC.swift */,
+				1B5E4A3E24F9F4C4003D8BE6 /* ChatStream */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		1B5E4A3E24F9F4C4003D8BE6 /* ChatStream */ = {
+			isa = PBXGroup;
+			children = (
+				1B5E4A3F24F9F4E2003D8BE6 /* ChatSream.swift */,
+				1B5E4A4224F9F52D003D8BE6 /* ChatMessage.swift */,
+				1B5E4A5124F9FE72003D8BE6 /* UserProtocol.swift */,
+				1BA7E6B824FBDED200F8A69D /* ArrowView.swift */,
+			);
+			path = ChatStream;
+			sourceTree = "<group>";
+		};
+		1BA7E6BB24FBE1A400F8A69D /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				1BA7E6BC24FBE1C000F8A69D /* ContractDetailComponent+Chat.swift */,
+				1BA7E6F124FCF1F000F8A69D /* ContractDetailComponent+ReceiptCarContract.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		1BA7E6BF24FCA81400F8A69D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1BA7E6C024FCA82500F8A69D /* FirebaseUser.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1BA7E6C324FCB1A000F8A69D /* ChatWithVato */ = {
+			isa = PBXGroup;
+			children = (
+				1BA7E6D624FCB58500F8A69D /* Cell */,
+				1BA7E6C424FCB1C800F8A69D /* CCChatWithVatoVC.xib */,
+				1BA7E6C524FCB1C800F8A69D /* CCChatWithVatoRouter.swift */,
+				1BA7E6C624FCB1C800F8A69D /* CCChatWithVatoBuilder.swift */,
+				1BA7E6C724FCB1C800F8A69D /* CCChatWithVatoInteractor.swift */,
+				1BA7E6C824FCB1C800F8A69D /* CCChatWithVatoVC.swift */,
+			);
+			path = ChatWithVato;
+			sourceTree = "<group>";
+		};
+		1BA7E6D624FCB58500F8A69D /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				1BA7E6D724FCB5A200F8A69D /* CCChatWithVatoCell.swift */,
+				1BA7E6D824FCB5A200F8A69D /* CCChatWithVatoCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		1BA7E6DD24FCE5AE00F8A69D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1BA7E6DE24FCE5C800F8A69D /* OrderContract.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1BA7E6E124FCF10600F8A69D /* Receipt */ = {
+			isa = PBXGroup;
+			children = (
+				1BA7E6E224FCF14000F8A69D /* ReceiptCarContractVC.xib */,
+				1BA7E6E324FCF14000F8A69D /* ReceiptCarContractRouter.swift */,
+				1BA7E6E424FCF14100F8A69D /* ReceiptCarContractBuilder.swift */,
+				1BA7E6E524FCF14100F8A69D /* ReceiptCarContractInteractor.swift */,
+				1BA7E6E624FCF14100F8A69D /* ReceiptCarContractVC.swift */,
+			);
+			path = Receipt;
+			sourceTree = "<group>";
+		};
+		1BA7E6F424FCF46600F8A69D /* DetailPriceView */ = {
+			isa = PBXGroup;
+			children = (
+				1BA7E6F524FCF47F00F8A69D /* DetailPriceView.swift */,
+			);
+			path = DetailPriceView;
+			sourceTree = "<group>";
+		};
+		1BBBF6EE24F8A44C0016E6AB /* CarContract */ = {
+			isa = PBXGroup;
+			children = (
+				1B29B2712509CFC500A4753F /* ListContract */,
+				1B152C60250792E1005AB13F /* ConfigRentalCar.swift */,
+				1BA7E6E124FCF10600F8A69D /* Receipt */,
+				1BA7E6C324FCB1A000F8A69D /* ChatWithVato */,
+				1B5E4A3D24F9F4B7003D8BE6 /* Chat */,
+				1BBBF71924F8EE7F0016E6AB /* ContractDetail */,
+				1BBBF70524F8B5D30016E6AB /* View */,
+				1BBBF72924F8F0820016E6AB /* Extension */,
+				1BA7E6DD24FCE5AE00F8A69D /* Model */,
+				1BBBF71224F8BCA90016E6AB /* Cell */,
+				1BBBF6EF24F8A48F0016E6AB /* CarContractObjcWrapper.swift */,
+				1BBBF6F224F8A5440016E6AB /* CarContractVC.xib */,
+				1BBBF6F324F8A5440016E6AB /* CarContractRouter.swift */,
+				1BBBF6F424F8A5440016E6AB /* CarContractBuilder.swift */,
+				1BBBF6F524F8A5440016E6AB /* CarContractInteractor.swift */,
+				1BBBF6F624F8A5440016E6AB /* CarContractVC.swift */,
+			);
+			path = CarContract;
+			sourceTree = "<group>";
+		};
+		1BBBF70524F8B5D30016E6AB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1BBBF70C24F8B89D0016E6AB /* CarContractView.swift */,
+				1BBBF70D24F8B89D0016E6AB /* CarContractView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1BBBF71224F8BCA90016E6AB /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				1BBBF71324F8BCC60016E6AB /* CarContractCell.swift */,
+				1BBBF71424F8BCC60016E6AB /* CarContractCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		1BBBF71924F8EE7F0016E6AB /* ContractDetail */ = {
+			isa = PBXGroup;
+			children = (
+				1BA7E6BB24FBE1A400F8A69D /* Extension */,
+				1BBBF71A24F8EEA70016E6AB /* ContractDetailVC.xib */,
+				1BBBF71B24F8EEA70016E6AB /* ContractDetailRouter.swift */,
+				1BBBF71C24F8EEA70016E6AB /* ContractDetailBuilder.swift */,
+				1BBBF71D24F8EEA70016E6AB /* ContractDetailInteractor.swift */,
+				1BBBF71E24F8EEA70016E6AB /* ContractDetailVC.swift */,
+			);
+			path = ContractDetail;
+			sourceTree = "<group>";
+		};
+		1BBBF72924F8F0820016E6AB /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				1BBBF72A24F8F0A60016E6AB /* CarContractComponent+ContractDetail.swift */,
+				1BA7E6D324FCB2FC00F8A69D /* CarContractComponent+CCChatWithVato.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		398A005F1D141E482CE21F25 /* Pods */ = {
@@ -3823,6 +4175,7 @@
 			isa = PBXGroup;
 			children = (
 				52F76756247779C2000D9F1E /* WalletTripBankCell.swift */,
+				1BBBF6E624F764CE0016E6AB /* WalletAccountCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -3895,6 +4248,7 @@
 		5E9EECF62194195F00A32576 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				1BBBF6EE24F8A44C0016E6AB /* CarContract */,
 				84993C322485FB4600699F71 /* WalletPay */,
 				681F683B2472683300D9BC5E /* Wallet */,
 				52F4824D24567C86008CA4C2 /* RegisterService */,
@@ -4021,6 +4375,7 @@
 		5EDB55E42236218B0055EF8F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				68EA52F824ED1AC4001D55DE /* Home */,
 				68413B6D24221E4B0027A7A8 /* MarkerHistory.swift */,
 				68413B6A24221D840027A7A8 /* BookingStream.swift */,
 				688CADB72403CA25001ECB21 /* TaxiPermission */,
@@ -4198,6 +4553,14 @@
 				687A548924287E690048AFB6 /* AddDestinationCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		683D13C1250F71D8008D09FE /* Require */ = {
+			isa = PBXGroup;
+			children = (
+				683D13C2250F71FC008D09FE /* RequireProtocol.swift */,
+			);
+			path = Require;
 			sourceTree = "<group>";
 		};
 		68407F1424599C5E0004268E /* ParamsArrayEncoding */ = {
@@ -4536,6 +4899,23 @@
 				68DFE15C24037AD00036E6C8 /* DriverProtocol.swift */,
 			);
 			path = Protocol;
+			sourceTree = "<group>";
+		};
+		68EA52F124ED1901001D55DE /* Banner */ = {
+			isa = PBXGroup;
+			children = (
+				68EA52F424ED1945001D55DE /* VatoAutoScrollView.swift */,
+				68EA52F224ED1914001D55DE /* VatoBannerView.swift */,
+			);
+			path = Banner;
+			sourceTree = "<group>";
+		};
+		68EA52F824ED1AC4001D55DE /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				68EA52F924ED1AEC001D55DE /* HomeItemModel.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 		68FEDD8224343E5D00409988 /* SwitchPayment */ = {
@@ -5619,9 +5999,12 @@
 		AF6D4A4C23D150E200A61F63 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				683D13C1250F71D8008D09FE /* Require */,
+				68EA52F124ED1901001D55DE /* Banner */,
 				68228FFB24AAA52C006DF9DC /* UpdateLocation */,
 				68407F1424599C5E0004268E /* ParamsArrayEncoding */,
 				68413B79242225D80027A7A8 /* Address.swift */,
+				681F8F19250690BC00E32CFA /* Polyline.swift */,
 				68413B762422243C0027A7A8 /* RequestInteractorProtocol.swift */,
 				AF0792FC24175A1400DA0330 /* WebVC.swift */,
 				6870AFAC2408CB5B00CD88DE /* Reachability */,
@@ -5635,6 +6018,7 @@
 				AF06BE4823F3ED2500E6A384 /* NotificationPushService.swift */,
 				AF6D4A5523D1541D00A61F63 /* Resource */,
 				AF6D4A4D23D150E200A61F63 /* RulesVaildate */,
+				1BA7E6F424FCF46600F8A69D /* DetailPriceView */,
 				AF6D4A4F23D150E200A61F63 /* AlertCustom */,
 				AFE1BC6D23F0F7F50064706D /* Define.swift */,
 				ADA409BA23FFCC37007C9542 /* Utils.swift */,
@@ -6390,6 +6774,7 @@
 				AF1FB7F323FE98A0009B307B /* TaxiRequestSuccess.xib in Resources */,
 				AFF3557A23EA70E100ECBE77 /* QuickSupportTVC.xib in Resources */,
 				AFD9617B22E5B2AF00EC2B65 /* PlaceTableHeaderView.xib in Resources */,
+				1BBBF6F724F8A5440016E6AB /* CarContractVC.xib in Resources */,
 				52AE82A5246933D100BB337C /* FoodViewImage.xib in Resources */,
 				5241DE6D2361909000037202 /* CreditPoint.storyboard in Resources */,
 				84ED10DF2473D666006FA3DA /* WalletPointVC.storyboard in Resources */,
@@ -6426,6 +6811,7 @@
 				47219D1E1ED5E377009D487B /* Invitation.storyboard in Resources */,
 				AFF3558623EA70E100ECBE77 /* QSRequestView.xib in Resources */,
 				B6EAC47121B014D100F89793 /* TopUpByThirdPartyVC.xib in Resources */,
+				1BBBF71F24F8EEA70016E6AB /* ContractDetailVC.xib in Resources */,
 				B6E0FE5F22A5834200C467F8 /* *.vato.vn.cer in Resources */,
 				6B2071C0206DDCAA00326892 /* FCFindView.xib in Resources */,
 				AF051EA42410E34100C9AF6C /* TOShortcutAutoReceiveTripTVC.xib in Resources */,
@@ -6451,6 +6837,7 @@
 				6B48432C1E73A49D00E7DF75 /* Main.storyboard in Resources */,
 				6B79177F20E1A08600811CF9 /* *.vato.io.cer in Resources */,
 				47065A6E1CFC7F6500FD565B /* Assets.xcassets in Resources */,
+				1BA7E6C924FCB1C800F8A69D /* CCChatWithVatoVC.xib in Resources */,
 				AD47FA7C23CFFF8A007C4E4D /* quick-support-response.json in Resources */,
 				68413B5624221A690027A7A8 /* VatoLocationHeaderView.xib in Resources */,
 				EA1C2DBF215096DD00D89602 /* FCWalletViewController.storyboard in Resources */,
@@ -6470,6 +6857,7 @@
 				6B3D2B731EEF9D7A00313E01 /* GoogleService-Info.plist in Resources */,
 				6B2071CD206DDE8500326892 /* FCNotifyBannerView.xib in Resources */,
 				68413B6424221B1C0027A7A8 /* PinAddressVC.xib in Resources */,
+				1BBBF71024F8B89D0016E6AB /* CarContractView.xib in Resources */,
 				6BC710D61EC20C5300DA263B /* FCCreateCarViewController.storyboard in Resources */,
 				6B51C57020C699CB00EE2643 /* FCPasscodeViewController.xib in Resources */,
 				526153FC2477B14F00C786D4 /* WTListBankCell.xib in Resources */,
@@ -6492,6 +6880,7 @@
 				AFA7E79223FA87FF000E7F89 /* FoodAddressTableViewCell.xib in Resources */,
 				522121A4230D422100DAC84B /* DeliveryFailVC.xib in Resources */,
 				682B677F2424B8B00007D3D2 /* DestinationInfoView.xib in Resources */,
+				1B29B27F2509CFC600A4753F /* CarContractVC.storyboard in Resources */,
 				EA0D97F821AD17FD008D16EE /* NBPhoneNumberMetadata.plist in Resources */,
 				AFF3558823EA70E100ECBE77 /* QSResponseView.xib in Resources */,
 				471D94A21ED15406008D040A /* success.mp3 in Resources */,
@@ -6531,7 +6920,9 @@
 				68B9C00E23FD3B6F00E24637 /* TOShortcutTVC.xib in Resources */,
 				6B3A18911FCDC3C000AF87CC /* FCRegisterAccountView.xib in Resources */,
 				AFD9617122E5B2AF00EC2B65 /* FavoritePlaceViewController.xib in Resources */,
+				1BA7E6DB24FCB5A200F8A69D /* CCChatWithVatoCell.xib in Resources */,
 				471D949E1ED15406008D040A /* offline.mp3 in Resources */,
+				1BA7E6E724FCF14100F8A69D /* ReceiptCarContractVC.xib in Resources */,
 				52F4825324567CB0008CA4C2 /* RegisterServiceVC.xib in Resources */,
 				6B52F0B920776B4C000D0DAB /* FCHelpViewController.xib in Resources */,
 				6B3A18851FCDC3C000AF87CC /* FCSmsCodeVerifyView.xib in Resources */,
@@ -6549,6 +6940,7 @@
 				471D94A11ED15406008D040A /* start.mp3 in Resources */,
 				71E3F34C1EE3A8750084749F /* ClientProfile.storyboard in Resources */,
 				6B46D70E2048F51100B8C774 /* balloon_read_right@2x.png in Resources */,
+				1BBBF71724F8BCC60016E6AB /* CarContractCell.xib in Resources */,
 				ADFFE3B6243DB4D300323A54 /* FCPointView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -6575,6 +6967,7 @@
 				AF1FB7F423FE98A0009B307B /* TaxiRequestSuccess.xib in Resources */,
 				AFF355A423EA711C00ECBE77 /* QuickSupportTVC.xib in Resources */,
 				EA8C49A1218F0347000F56B5 /* Launch Screen.storyboard in Resources */,
+				1BBBF6F824F8A5440016E6AB /* CarContractVC.xib in Resources */,
 				52AE82A6246933D100BB337C /* FoodViewImage.xib in Resources */,
 				5241DE6E2361909000037202 /* CreditPoint.storyboard in Resources */,
 				84ED10E02473D666006FA3DA /* WalletPointVC.storyboard in Resources */,
@@ -6611,6 +7004,7 @@
 				6B22BEF11FB00D9D0095270F /* Invitation.storyboard in Resources */,
 				B6EAC47221B014D100F89793 /* TopUpByThirdPartyVC.xib in Resources */,
 				AFF355B023EA712500ECBE77 /* QSRequestView.xib in Resources */,
+				1BBBF72024F8EEA80016E6AB /* ContractDetailVC.xib in Resources */,
 				B6E0FE6022A5834200C467F8 /* *.vato.vn.cer in Resources */,
 				6B2071C1206DDCAA00326892 /* FCFindView.xib in Resources */,
 				AF051EA72410E34800C9AF6C /* TOShortcutAutoReceiveTripTVC.xib in Resources */,
@@ -6636,6 +7030,7 @@
 				6B3CEE9120D12D8B002B3A40 /* FCNewWebViewController.xib in Resources */,
 				6B22BEF91FB00D9D0095270F /* FCApplyLoginViewController.xib in Resources */,
 				5E9EED0B21942EEC00A32576 /* WithdrawVC.xib in Resources */,
+				1BA7E6CA24FCB1C800F8A69D /* CCChatWithVatoVC.xib in Resources */,
 				AD47FA7D23CFFF8A007C4E4D /* quick-support-response.json in Resources */,
 				68413B5724221A690027A7A8 /* VatoLocationHeaderView.xib in Resources */,
 				6B5ABAEC20C8DC5700FAB5FC /* FCInvoiceDetailViewController.xib in Resources */,
@@ -6655,6 +7050,7 @@
 				6B22BF041FB00D9D0095270F /* ReceiptView.xib in Resources */,
 				6B22BF051FB00D9D0095270F /* FCWebViewController.xib in Resources */,
 				68413B6524221B1C0027A7A8 /* PinAddressVC.xib in Resources */,
+				1BBBF71124F8B89D0016E6AB /* CarContractView.xib in Resources */,
 				EA51BCD921A2CF6600558731 /* FCNotificationDetailViewController.xib in Resources */,
 				6B22BF061FB00D9D0095270F /* FCInvoiceTableViewCell.xib in Resources */,
 				526153FD2477B14F00C786D4 /* WTListBankCell.xib in Resources */,
@@ -6677,6 +7073,7 @@
 				6B22BF101FB00D9D0095270F /* book_noti.mp3 in Resources */,
 				6B74AE4020D7772A005C8F28 /* FCUpdateViewController.xib in Resources */,
 				682B67802424B8B00007D3D2 /* DestinationInfoView.xib in Resources */,
+				1B29B2802509CFC600A4753F /* CarContractVC.storyboard in Resources */,
 				AFF355B223EA712500ECBE77 /* QSResponseView.xib in Resources */,
 				AFD9618922E5B2D700EC2B65 /* ShowPlaceViewController.xib in Resources */,
 				AFD9619222E5B2E000EC2B65 /* FavoritePlaceTableViewCell.xib in Resources */,
@@ -6716,7 +7113,9 @@
 				AFD9618322E5B2C900EC2B65 /* FavoritePlaceViewController.xib in Resources */,
 				6B22BF1A1FB00D9D0095270F /* offline.mp3 in Resources */,
 				6B52F0BA20776B4C000D0DAB /* FCHelpViewController.xib in Resources */,
+				1BA7E6DC24FCB5A200F8A69D /* CCChatWithVatoCell.xib in Resources */,
 				6B3A18861FCDC3C000AF87CC /* FCSmsCodeVerifyView.xib in Resources */,
+				1BA7E6E824FCF14100F8A69D /* ReceiptCarContractVC.xib in Resources */,
 				52F4825424567CB0008CA4C2 /* RegisterServiceVC.xib in Resources */,
 				6B22BF1B1FB00D9D0095270F /* GoogleService-Info-Test.plist in Resources */,
 				AFD9618F22E5B2E000EC2B65 /* PlaceTableHeaderView.xib in Resources */,
@@ -6734,6 +7133,7 @@
 				6B22BF201FB00D9D0095270F /* start.mp3 in Resources */,
 				6B22BF221FB00D9D0095270F /* ClientProfile.storyboard in Resources */,
 				6B46D70F2048F51100B8C774 /* balloon_read_right@2x.png in Resources */,
+				1BBBF71824F8BCC60016E6AB /* CarContractCell.xib in Resources */,
 				ADFFE3B7243DB4D300323A54 /* FCPointView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -7167,11 +7567,14 @@
 				52F4827C2456D357008CA4C2 /* RSListServiceComponent+RegisterService.swift in Sources */,
 				1B776BE024A303F800F25C44 /* ConfigManager.swift in Sources */,
 				AFD9617F22E5B2AF00EC2B65 /* UpdatePlaceVM.swift in Sources */,
+				1BA7E6B924FBDED200F8A69D /* ArrowView.swift in Sources */,
 				6B4D617620C28BCE009DF29D /* FCBalance.m in Sources */,
 				5E2B3ED32216C261004D2170 /* BankTransferDetailVC.swift in Sources */,
 				6B2C4B011FA35EFA00AAC9C9 /* FCWithdrawViewController.m in Sources */,
+				1BBBF6F924F8A5440016E6AB /* CarContractRouter.swift in Sources */,
 				52F1DFDE247FAC71000D7FC1 /* DriverBalance.swift in Sources */,
 				84D3B43424878E6400DD0554 /* WTWithDrawBuilder.swift in Sources */,
+				1B152C61250792E1005AB13F /* ConfigRentalCar.swift in Sources */,
 				6B3A18AF1FCDC73000AF87CC /* LoginViewController.m in Sources */,
 				68B9C00C23FD3B6F00E24637 /* TOShortcutBuilder.swift in Sources */,
 				CFBD270721C2020600297B09 /* WalletListHistoryComponent+WalletDetailHistory.swift in Sources */,
@@ -7211,14 +7614,17 @@
 				526153F42477B02900C786D4 /* WalletTripListBankVC.swift in Sources */,
 				AFA96B9D241A269D007DEBA1 /* OrderItem.swift in Sources */,
 				68DCC6C52397D17200F63BDD /* FirebaseTokenHelper.swift in Sources */,
+				1BBBF71524F8BCC60016E6AB /* CarContractCell.swift in Sources */,
 				6829777423FE3F6800155C78 /* TOShortcutComponent+TOOrder.swift in Sources */,
 				EA17720421660B200085803B /* UITapGestureRecognizer+Tap.m in Sources */,
 				6B242FCE1EDFB79B00D8C096 /* FCPlaceHistory.m in Sources */,
 				AFF3559323EA70E100ECBE77 /* QuickSupportItemResponse.swift in Sources */,
+				68EA52FA24ED1AEC001D55DE /* HomeItemModel.swift in Sources */,
 				68413B6B24221D840027A7A8 /* BookingStream.swift in Sources */,
 				6B167FEE1FA2EBE8009418FC /* FCProfileLevel2.m in Sources */,
 				52F427C22473DC5800F9BB1C /* WalletTripBuilder.swift in Sources */,
 				6B3646FF1EBD914100D61C91 /* FCZoneTableViewController.m in Sources */,
+				1BBBF72124F8EEA80016E6AB /* ContractDetailRouter.swift in Sources */,
 				6B3A18A31FCDC40900AF87CC /* FCView.m in Sources */,
 				EA59BC9D21A804A40070089A /* FCTrackingHelper.m in Sources */,
 				6B92A9E71ECB346F0095EF2F /* FCNotificationSetting.m in Sources */,
@@ -7227,6 +7633,7 @@
 				AFEFE0252418EC5000986A44 /* StoreProductCell.swift in Sources */,
 				84D3B43324878E6400DD0554 /* WTWithDrawRouter.swift in Sources */,
 				47A8E4181CFC99950001F8A6 /* FirebaseHelper.m in Sources */,
+				1BA7E6EF24FCF14100F8A69D /* ReceiptCarContractVC.swift in Sources */,
 				AF43D07923FA79530083D22B /* FoodReceivePackageVC.swift in Sources */,
 				CFBD270B21C2020600297B09 /* WalletListHistoryInteractor.swift in Sources */,
 				68CB5F182357096900B7D704 /* FCBookingService+History.m in Sources */,
@@ -7248,6 +7655,8 @@
 				6B3A18AB1FCDC6EA00AF87CC /* NSString+Helper.m in Sources */,
 				AFD9617822E5B2AF00EC2B65 /* PlaceModel.swift in Sources */,
 				682B67772424B38E0007D3D2 /* AddDestinationConfirmBuilder.swift in Sources */,
+				1B5E4A4B24F9F6C0003D8BE6 /* ChatVC.swift in Sources */,
+				1B29B2812509CFC600A4753F /* ListCar.swift in Sources */,
 				4704CAA11D0C80D600D2886A /* FCFilter.m in Sources */,
 				AF1F891C23CF6B6F00283F1D /* PagingListView.swift in Sources */,
 				52F427DF247537A100F9BB1C /* WalletAddNewBankInteractor.swift in Sources */,
@@ -7279,6 +7688,7 @@
 				682977A223FE9F1800155C78 /* TODetailLocationHeader.swift in Sources */,
 				68C173D42347235600AFC261 /* TripTrackingManager.m in Sources */,
 				6B5161C221219AF500E71F5E /* FCGGPlace.m in Sources */,
+				1B29B27D2509CFC600A4753F /* ListCarContractInteractor.swift in Sources */,
 				84E31BB524750FD8004B1CE5 /* BuyPointVC.swift in Sources */,
 				713EC30D1ED934C4001D499E /* FCDigitalClockTrip.m in Sources */,
 				52F4825524567CB0008CA4C2 /* RegisterServiceRouter.swift in Sources */,
@@ -7287,6 +7697,7 @@
 				EAFA8DE221A3ACE000C2FB61 /* FCManifestPredicate.m in Sources */,
 				AFF3557223EA70E100ECBE77 /* QuickSupportMainComponent+QuickSupportList.swift in Sources */,
 				5E9EED0421942AC900A32576 /* BankSelectControl.swift in Sources */,
+				1B5E4A4924F9F6C0003D8BE6 /* ChatBuilder.swift in Sources */,
 				5E2B3EB622166963004D2170 /* BankTransferInteractor.swift in Sources */,
 				6B91498D1F270F3600FD7E86 /* FCNotifyViewController.m in Sources */,
 				522121AC230D4E3600DAC84B /* DeliveryFailTableViewCell.swift in Sources */,
@@ -7300,6 +7711,7 @@
 				EA0D97F221AD17FD008D16EE /* NBPhoneNumberUtil+ShortNumber.m in Sources */,
 				EA0D97E821AD17FD008D16EE /* NSArray+NBAdditions.m in Sources */,
 				526DE6C62438247700835B86 /* StatusRequestRouter.swift in Sources */,
+				1BBBF6FB24F8A5440016E6AB /* CarContractBuilder.swift in Sources */,
 				47D3857E1D322CD500C5948C /* APICall.m in Sources */,
 				5275E457245834C9003E51EF /* RSListServiceComponent+RSPolicy.swift in Sources */,
 				6B2B6B6720FEE94D008D6EFD /* FCFareModifier.m in Sources */,
@@ -7327,12 +7739,14 @@
 				ADA409AF23FFC7B8007C9542 /* TODriverInfoView.swift in Sources */,
 				47F6E0731D1BC1E4008076E0 /* FCPlace.m in Sources */,
 				71FEDF711ED1A2C4003814CA /* BookTripMissView.m in Sources */,
+				1B29B28D2509E13A00A4753F /* ListCarContractComponent+ContractDetail.swift in Sources */,
 				CFBD272521C2777100297B09 /* TopUpByMoneyAction.swift in Sources */,
 				5275E44E24582E25003E51EF /* RSPolicyRouter.swift in Sources */,
 				6857F1F823D1635A00135136 /* InputAutoresize.swift in Sources */,
 				68413B7A242225D80027A7A8 /* Address.swift in Sources */,
 				5247C860247A985E00E0622B /* WTHistoryVC.swift in Sources */,
 				B6EAC46721B014D100F89793 /* TopupRow.swift in Sources */,
+				1BBBF6F024F8A4900016E6AB /* CarContractObjcWrapper.swift in Sources */,
 				84C65C19247E7EA90025814A /* RequesterObjc.swift in Sources */,
 				6829779A23FE8A5B00155C78 /* TODetailLocationProtocol.swift in Sources */,
 				52F4825924567CB0008CA4C2 /* RegisterServiceInteractor.swift in Sources */,
@@ -7372,6 +7786,7 @@
 				474D437D1D05353700802FD4 /* NSObject+Helper.m in Sources */,
 				522121A3230D422100DAC84B /* DeliveryFailVC.swift in Sources */,
 				682B67792424B38E0007D3D2 /* AddDestinationConfirmInteractor.swift in Sources */,
+				1BA7E6ED24FCF14100F8A69D /* ReceiptCarContractInteractor.swift in Sources */,
 				4703F5491D0B15BD00DD3A28 /* CarTypeViewController.m in Sources */,
 				84ED10D62473CC10006FA3DA /* WalletPointVC.swift in Sources */,
 				68413B6224221B1C0027A7A8 /* PinAddressBuilder.swift in Sources */,
@@ -7400,6 +7815,7 @@
 				681710AF23FFE9F200F34034 /* TOPickupLocation.swift in Sources */,
 				6870AFAF2408CB5C00CD88DE /* ReachabilityService.swift in Sources */,
 				47D385811D32322200C5948C /* FCLocation.m in Sources */,
+				683D13C3250F71FC008D09FE /* RequireProtocol.swift in Sources */,
 				681710AB23FFC75100F34034 /* TOManageCommunication.swift in Sources */,
 				AFF3558C23EA70E100ECBE77 /* RequestQuickSupportVC.swift in Sources */,
 				6B8094B720D2904E00DFF0A1 /* FavoriteTableViewCell.m in Sources */,
@@ -7421,6 +7837,7 @@
 				AFD9617322E5B2AF00EC2B65 /* ShowPlaceViewController.swift in Sources */,
 				EA0D97EA21AD17FD008D16EE /* NBRegExMatcher.m in Sources */,
 				84BAAD36248200530020867A /* WTWithDrawSuccessInteractor.swift in Sources */,
+				1BA7E6C124FCA82500F8A69D /* FirebaseUser.swift in Sources */,
 				AFA96B99241A269D007DEBA1 /* SalesOrderAddress.swift in Sources */,
 				AF07930524178CAC00DA0330 /* BUMainRouter.swift in Sources */,
 				ADFFE3B3243DB4BB00323A54 /* FCPointView.m in Sources */,
@@ -7471,7 +7888,9 @@
 				6BD54E8F1EDE7A4C00DD82E0 /* FCInvoice.m in Sources */,
 				6B3CEE8E20D12D8B002B3A40 /* FCNewWebViewController.m in Sources */,
 				EA0D97EC21AD17FD008D16EE /* NBRegularExpressionCache.m in Sources */,
+				1BA7E6EB24FCF14100F8A69D /* ReceiptCarContractBuilder.swift in Sources */,
 				6B3A188D1FCDC3C000AF87CC /* FCPhoneInputView.m in Sources */,
+				1B5E4A4D24F9F6C0003D8BE6 /* ChatInteractor.swift in Sources */,
 				6B7E5A2520BCB096003CD2FB /* FCBookingRule.m in Sources */,
 				688CADC92403CA25001ECB21 /* TOPermissions.swift in Sources */,
 				526153F02477B02900C786D4 /* WalletTripListBankBuilder.swift in Sources */,
@@ -7487,7 +7906,10 @@
 				4765764A1D4C673400B0A49A /* CLLocation+Bearing.m in Sources */,
 				AF55EA2323E95A1300BB863B /* FeedbackCancelResonBuilder.swift in Sources */,
 				AFF3557523EA70E100ECBE77 /* QuickSupportMainVC.swift in Sources */,
+				1BA7E6CB24FCB1C800F8A69D /* CCChatWithVatoRouter.swift in Sources */,
+				1B29B2792509CFC600A4753F /* ListCarContractVC.swift in Sources */,
 				6B2304951FA74AB800CC4680 /* FBEncryptorAES.m in Sources */,
+				1BA7E6CF24FCB1C800F8A69D /* CCChatWithVatoInteractor.swift in Sources */,
 				6BB017651F3310DC002829B3 /* ClockViewModel.m in Sources */,
 				AFF3558D23EA70E100ECBE77 /* RequestQuickSupportComponent+QuickSupportList.swift in Sources */,
 				475C85F01D0BCF1A00CD2AD9 /* FCMCarType.m in Sources */,
@@ -7500,6 +7922,7 @@
 				68B9C00A23FD3B6F00E24637 /* TOShortcutRouter.swift in Sources */,
 				5EDC11DC219533C000970E4D /* BankPushCell.swift in Sources */,
 				68B9C03223FD5E3F00E24637 /* TOShortcutComponent+QuickSupportMain.swift in Sources */,
+				1BBBF72524F8EEA80016E6AB /* ContractDetailInteractor.swift in Sources */,
 				6B36470B1EBD920700D61C91 /* FCZone.m in Sources */,
 				68B9C00823FD3B6F00E24637 /* TOShortcutInteractor.swift in Sources */,
 				84ED10D92473D33C006FA3DA /* TOShortcutComponent+WalletReceiveBooking.swift in Sources */,
@@ -7508,6 +7931,7 @@
 				AF1FB7E723FE7F0C009B307B /* MarketingPointCollectionViewCell.swift in Sources */,
 				AFF3559223EA70E100ECBE77 /* RequestQuickSupportImageCell.swift in Sources */,
 				68413B4C24221A690027A7A8 /* LocationPickerRouter.swift in Sources */,
+				1BBBF72724F8EEA80016E6AB /* ContractDetailVC.swift in Sources */,
 				AF7D0DD922EA1428002E4A13 /* BookingConfirmGradientView.swift in Sources */,
 				6B3A18A11FCDC40900AF87CC /* FCProgressView.m in Sources */,
 				AF061787241CE9B90013AB4B /* BUSelectStationRouter.swift in Sources */,
@@ -7518,6 +7942,7 @@
 				522121B3230D5A8000DAC84B /* FirebaseModel+DeliveryConfig.swift in Sources */,
 				52C18D382371561600C6A6E6 /* ListDetailExpressCell.swift in Sources */,
 				681F684A2472706900D9BC5E /* WalletTableCell.swift in Sources */,
+				1BA7E6BD24FBE1C000F8A69D /* ContractDetailComponent+Chat.swift in Sources */,
 				CFAF7D4221E3321B00620B1F /* ReferralObjcWrapper.swift in Sources */,
 				6B5795411EBF54DB00CB5734 /* FCDriverRatio.m in Sources */,
 				6B2071B2206DDC5200326892 /* InviteViewController.m in Sources */,
@@ -7538,6 +7963,7 @@
 				AF1FB7F023FE988F009B307B /* TaxiRequestSuccess.swift in Sources */,
 				5E2B3ECF2216C261004D2170 /* BankTransferDetailBuilder.swift in Sources */,
 				AF1FB7E023FE7ECC009B307B /* TaxiDummyData.swift in Sources */,
+				681F8F1A250690BC00E32CFA /* Polyline.swift in Sources */,
 				EA51BCCA21A2998800558731 /* FCPromotionPopupView.m in Sources */,
 				AF4CD3F823C5DFF80039E152 /* FireBase+Extension.swift in Sources */,
 				5287DC4E2436EBA5005E8FE3 /* PRCreateRequest.swift in Sources */,
@@ -7554,16 +7980,21 @@
 				EA022269213B8722003A0ABD /* FCBankingListTableViewController.m in Sources */,
 				AF2E8B94230EF1E5003E5A1F /* ExpressSuccessDetailVC.swift in Sources */,
 				AFF3559023EA70E100ECBE77 /* RequestQuickSupportCell.swift in Sources */,
+				1BBBF70E24F8B89D0016E6AB /* CarContractView.swift in Sources */,
 				6829778523FE764500155C78 /* TOOrderDummy.swift in Sources */,
+				1B5E4A4324F9F52D003D8BE6 /* ChatMessage.swift in Sources */,
 				EAD284E4216616A1003DE36E /* UILabel+Link.m in Sources */,
 				52733C54243C7ECD00D1611B /* RequestResponseDetail.swift in Sources */,
 				6B471AE220BD664000DB8EE0 /* NSData+CRC32.m in Sources */,
 				6B2304941FA74AB800CC4680 /* NSData+Base64.m in Sources */,
 				AFF3558123EA70E100ECBE77 /* QuickSupportListBuilder.swift in Sources */,
+				1BA7E6CD24FCB1C800F8A69D /* CCChatWithVatoBuilder.swift in Sources */,
 				5287DC5C2436EEC9005E8FE3 /* PRHeaderView.swift in Sources */,
+				1BA7E6DF24FCE5C800F8A69D /* OrderContract.swift in Sources */,
 				AD8DD46824125ED80050C9D4 /* QuickSupportManager.swift in Sources */,
 				68CB5F092356FEF100B7D704 /* FCBookingService+Verify.m in Sources */,
 				EA14B5EB2138F601001D55E0 /* FCBanking.m in Sources */,
+				1B5E4A4F24F9F6C0003D8BE6 /* ChatRouter.swift in Sources */,
 				AFA96BB7241A28A3007DEBA1 /* MerchantCategory.swift in Sources */,
 				526E9C85247BB89800F45E76 /* WTViewBank.swift in Sources */,
 				AF7D0DD522EA0FCA002E4A13 /* FavoritePlaceManager.swift in Sources */,
@@ -7596,10 +8027,12 @@
 				5EDC11EB21956D8000970E4D /* BankRow.swift in Sources */,
 				688CADC52403CA25001ECB21 /* TOUserPermissions.swift in Sources */,
 				68B9C01823FD3DCA00E24637 /* ShorcurtWrapperObjC.swift in Sources */,
+				1BBBF72B24F8F0A60016E6AB /* CarContractComponent+ContractDetail.swift in Sources */,
 				6B8505EB1FA18F5500C3A58E /* ProfileViewController.m in Sources */,
 				6B4A992A2105DF8E00D6981F /* TripTypeUtil.m in Sources */,
 				849697FB247A9F9200B8B2E2 /* TopUpStream.swift in Sources */,
 				AF55EA2723E95A1300BB863B /* FeedbackCancelResonVC.swift in Sources */,
+				1BA7E6F624FCF47F00F8A69D /* DetailPriceView.swift in Sources */,
 				68CB5F0E2357029900B7D704 /* FCBookingService+BookStatus.m in Sources */,
 				84C65C04247E69680025814A /* NapasHandler.swift in Sources */,
 				AF0385CE2406D94000E7A9FC /* RequestSuccesResponse.swift in Sources */,
@@ -7637,13 +8070,16 @@
 				52841BFE247A1FE10013EACE /* WTWithDrawConfirmVC.swift in Sources */,
 				68413B3A24221A680027A7A8 /* SetLocationInteractor.swift in Sources */,
 				ADC0687A242A1E3A00F80C98 /* AddDestinationNewPrice.swift in Sources */,
+				1BA7E6D424FCB2FC00F8A69D /* CarContractComponent+CCChatWithVato.swift in Sources */,
 				CFBD270321C2020600297B09 /* WalletHistoryDetailTitleCell.swift in Sources */,
 				CF7610D02193F00E00E148F5 /* UIView+Extension.swift in Sources */,
+				1BBBF6E724F764CE0016E6AB /* WalletAccountCell.swift in Sources */,
 				CFBD270121C2020600297B09 /* WalletDetailHistoryRouter.swift in Sources */,
 				68B9BFF823FD359F00E24637 /* VatoShorcutView.swift in Sources */,
 				6829779023FE872300155C78 /* TODetailLocationInteractor.swift in Sources */,
 				CFBD271A21C2043B00297B09 /* WalletListHistoryObjcWrapper.swift in Sources */,
 				71A929C31E9D49A100402996 /* MBSliderView.m in Sources */,
+				1BA7E6D124FCB1C800F8A69D /* CCChatWithVatoVC.swift in Sources */,
 				526153FA2477B14F00C786D4 /* WTListBankCell.swift in Sources */,
 				6B242FD11EDFB7A900D8C096 /* GoogleViewModel.m in Sources */,
 				EA14B5E72138E4E9001D55E0 /* FCBankingInfo.m in Sources */,
@@ -7678,12 +8114,16 @@
 				AFA96BA1241A269D007DEBA1 /* QuoteAddresses.swift in Sources */,
 				68413B4824221A690027A7A8 /* LocationPicker+PinAddress.swift in Sources */,
 				CFBD271721C2034100297B09 /* WalletTransactionsHistoryModel.swift in Sources */,
+				1BA7E6E924FCF14100F8A69D /* ReceiptCarContractRouter.swift in Sources */,
 				6B7E5A2720BCB096003CD2FB /* FCGoogleKey.m in Sources */,
 				CFBD26FF21C2020600297B09 /* WalletDetailHistoryBuilder.swift in Sources */,
 				EA14B5F02139387F001D55E0 /* FCBankingWithdrawHistoryViewController.m in Sources */,
+				1B29B2832509CFC600A4753F /* ListCarContractRouter.swift in Sources */,
 				7152DA361E9D353600437205 /* TripMapViewController.m in Sources */,
 				AFF3559B23EA70E100ECBE77 /* QuickSupportDetailRouter.swift in Sources */,
 				47ADB4DD1DA741AA00753E9A /* FCConfigs.m in Sources */,
+				1BBBF72324F8EEA80016E6AB /* ContractDetailBuilder.swift in Sources */,
+				1B5E4A4024F9F4E2003D8BE6 /* ChatSream.swift in Sources */,
 				682B677B2424B38E0007D3D2 /* AddDestinationConfirmVC.swift in Sources */,
 				475C85FF1D0C096700CD2AD9 /* IQActionSheetPickerView.m in Sources */,
 				71B8681D1E98E6C30063028B /* BookViewController.m in Sources */,
@@ -7692,6 +8132,7 @@
 				5279862A243492CA00E06395 /* ProcessingRequestBuilder.swift in Sources */,
 				EA247BD421BF6DD60059CC2A /* FCVatoPayCoinViewController.m in Sources */,
 				6B8388AF1F162CBC00042AEF /* FirebaseDynamicLinkHelper.m in Sources */,
+				1B5E4A5224F9FE72003D8BE6 /* UserProtocol.swift in Sources */,
 				47065A661CFC7F6500FD565B /* AppDelegate.m in Sources */,
 				6B6F39212095CB7300305BDB /* FCBookInfo.m in Sources */,
 				6870AFB12408CB5C00CD88DE /* Reachability.swift in Sources */,
@@ -7723,11 +8164,13 @@
 				6B3A188F1FCDC3C000AF87CC /* FCSmsCodeVerifyView.m in Sources */,
 				6B2071CB206DDE8500326892 /* FCNotifyBannerView.m in Sources */,
 				AF0DF13E23FCDD6500EDC9AC /* ImagesSelectView.swift in Sources */,
+				1BA7E6D924FCB5A200F8A69D /* CCChatWithVatoCell.swift in Sources */,
 				AF43D06923FA77910083D22B /* FoodReceivePackageObjcWrapper.swift in Sources */,
 				AF0792FD24175A1500DA0330 /* WebVC.swift in Sources */,
 				AF6D4A5223D150E200A61F63 /* AlertCustomVC.swift in Sources */,
 				6B6F65F020BAAF1200A93A46 /* FCOnlineStatus.m in Sources */,
 				6B2C4B041FA38B3500AAC9C9 /* FCInputPhoneViewController.m in Sources */,
+				1BBBF6FD24F8A5440016E6AB /* CarContractInteractor.swift in Sources */,
 				AFA96B612419E3D4007DEBA1 /* BUMainComponent+BUBookingDetail.swift in Sources */,
 				AD8DD46B241265E10050C9D4 /* RequestQuickSupportObjcWrapper.swift in Sources */,
 				AF9DDED822E7172000F14703 /* SearchPlaceViewController.swift in Sources */,
@@ -7753,6 +8196,7 @@
 				AFA96BB5241A28A3007DEBA1 /* MerchantBasic.swift in Sources */,
 				AF013BFA23F4FBB300478332 /* QuickSupportDetailObjcWrapper.swift in Sources */,
 				AFEFE0282418ECD600986A44 /* StoreEditControl.swift in Sources */,
+				68EA52F524ED1945001D55DE /* VatoAutoScrollView.swift in Sources */,
 				AFA96B6B241A0F73007DEBA1 /* BUInfoOrderView.swift in Sources */,
 				713EC31E1EDBA19B001D499E /* TripManagerViewController.m in Sources */,
 				6829778C23FE872300155C78 /* TODetailLocationRouter.swift in Sources */,
@@ -7767,6 +8211,7 @@
 				6B4A9932210602D400D6981F /* FCBookConfigure.m in Sources */,
 				52F4825E2456971C008CA4C2 /* TOShortcutComponent+RegisterService.swift in Sources */,
 				521ADFA2246548A200BD1B3C /* BottomCornerView.swift in Sources */,
+				1B29B27B2509CFC600A4753F /* ListCarContractBuilder.swift in Sources */,
 				1856B56E1E569E7A00757822 /* FCService.m in Sources */,
 				47F05BA91ECF5BE1001181B9 /* SplashViewController.m in Sources */,
 				AFA7E78A23FA8626000E7F89 /* FoodNoteTableViewCell.swift in Sources */,
@@ -7786,9 +8231,11 @@
 				AF07930B24178CAC00DA0330 /* BUMainVC.swift in Sources */,
 				526C1E3E243AD65200BE6B1E /* TOShortcutComponent+StatusRequest.swift in Sources */,
 				52F427E1247537A100F9BB1C /* WalletAddNewBankVC.swift in Sources */,
+				68EA52F324ED1914001D55DE /* VatoBannerView.swift in Sources */,
 				68B57983243CD2A400CF143E /* TripNoteDetailVC.swift in Sources */,
 				AFA96B78241A257E007DEBA1 /* NoteDeliveryModel.swift in Sources */,
 				526DE6CC2438247700835B86 /* StatusRequestVC.swift in Sources */,
+				1BBBF6FF24F8A5440016E6AB /* CarContractVC.swift in Sources */,
 				84BAAD34248200530020867A /* WTWithDrawSuccessBuilder.swift in Sources */,
 				AF07930924178CAC00DA0330 /* BUMainInteractor.swift in Sources */,
 				AF6D4A5723D1541D00A61F63 /* Resource.swift in Sources */,
@@ -7802,6 +8249,7 @@
 				6B18C5CA1EC8AC6100F1B44A /* ProfileDetailViewController.m in Sources */,
 				AF6D4A5123D150E200A61F63 /* RulesTitle.swift in Sources */,
 				B6EAC46B21B014D100F89793 /* TopUpChooseVC.swift in Sources */,
+				1BA7E6F224FCF1F000F8A69D /* ContractDetailComponent+ReceiptCarContract.swift in Sources */,
 				470B10A31CFD775C00D39153 /* NavigatorHelper.m in Sources */,
 				84BC761F2477923700771E9F /* WalletPointComponent+LinkingCard.swift in Sources */,
 				6B6B18EF20C59D07001A76B1 /* FCUCar.m in Sources */,
@@ -7875,15 +8323,19 @@
 				52F4827D2456D357008CA4C2 /* RSListServiceComponent+RegisterService.swift in Sources */,
 				1B776BE124A303F800F25C44 /* ConfigManager.swift in Sources */,
 				6B4D617720C28BCE009DF29D /* FCBalance.m in Sources */,
+				1BA7E6BA24FBDED200F8A69D /* ArrowView.swift in Sources */,
 				5E2B3ED42216C261004D2170 /* BankTransferDetailVC.swift in Sources */,
 				6B22BE341FB00D9D0095270F /* TripPageContentViewController.m in Sources */,
 				6B3A18B01FCDC73000AF87CC /* LoginViewController.m in Sources */,
+				1BBBF6FA24F8A5440016E6AB /* CarContractRouter.swift in Sources */,
 				52F1DFDF247FAC71000D7FC1 /* DriverBalance.swift in Sources */,
 				84D3B4382487975D00DD0554 /* WTWithDrawBuilder.swift in Sources */,
+				1B152C62250792E1005AB13F /* ConfigRentalCar.swift in Sources */,
 				CFBD270821C2020600297B09 /* WalletListHistoryComponent+WalletDetailHistory.swift in Sources */,
 				68B9C00D23FD3B6F00E24637 /* TOShortcutBuilder.swift in Sources */,
 				6B22BE351FB00D9D0095270F /* FCWithdrawViewController.m in Sources */,
 				5275E45324582E25003E51EF /* RSPolicyInteractor.swift in Sources */,
+				68EA52F624ED1945001D55DE /* VatoAutoScrollView.swift in Sources */,
 				52F427CA2473DCA100F9BB1C /* WalletTripObjcWrapper.swift in Sources */,
 				52A7D81424382967005CF790 /* ProcessingRequestComponent+ProcessingRequest.swift in Sources */,
 				6B22BE361FB00D9D0095270F /* CarManageTableViewCell.m in Sources */,
@@ -7918,14 +8370,17 @@
 				68DCC6C62397D17200F63BDD /* FirebaseTokenHelper.swift in Sources */,
 				526153F52477B02900C786D4 /* WalletTripListBankVC.swift in Sources */,
 				AFA96B9E241A269D007DEBA1 /* OrderItem.swift in Sources */,
+				1BBBF71624F8BCC60016E6AB /* CarContractCell.swift in Sources */,
 				6829777523FE3F6800155C78 /* TOShortcutComponent+TOOrder.swift in Sources */,
 				EA17720521660B200085803B /* UITapGestureRecognizer+Tap.m in Sources */,
 				6B22BE3F1FB00D9D0095270F /* FacecarNavigationViewController.m in Sources */,
 				AFF355BD23EA715100ECBE77 /* QuickSupportItemResponse.swift in Sources */,
+				68EA52FB24ED1AEC001D55DE /* HomeItemModel.swift in Sources */,
 				6B22BE401FB00D9D0095270F /* FCPlaceHistory.m in Sources */,
 				68413B6C24221D840027A7A8 /* BookingStream.swift in Sources */,
 				6B22BE411FB00D9D0095270F /* FCProfileLevel2.m in Sources */,
 				52F427C32473DC5800F9BB1C /* WalletTripBuilder.swift in Sources */,
+				1BBBF72224F8EEA80016E6AB /* ContractDetailRouter.swift in Sources */,
 				6B3A18A41FCDC40900AF87CC /* FCView.m in Sources */,
 				EA59BC9E21A804A40070089A /* FCTrackingHelper.m in Sources */,
 				6B22BE421FB00D9D0095270F /* FCZoneTableViewController.m in Sources */,
@@ -7934,6 +8389,7 @@
 				6B2B6B5420FEE8AB008D6EFD /* FCFareService.m in Sources */,
 				AFEFE0262418EC5000986A44 /* StoreProductCell.swift in Sources */,
 				84D3B4372487974900DD0554 /* WTWithDrawRouter.swift in Sources */,
+				1BA7E6F024FCF14100F8A69D /* ReceiptCarContractVC.swift in Sources */,
 				AF43D07A23FA79530083D22B /* FoodReceivePackageVC.swift in Sources */,
 				CFBD270C21C2020600297B09 /* WalletListHistoryInteractor.swift in Sources */,
 				68CB5F192357096900B7D704 /* FCBookingService+History.m in Sources */,
@@ -7955,6 +8411,8 @@
 				AFA96B582419E1BC007DEBA1 /* BUBookingDetailRouter.swift in Sources */,
 				6B22BE481FB00D9D0095270F /* FCNotification.m in Sources */,
 				6B3A18AC1FCDC6EA00AF87CC /* NSString+Helper.m in Sources */,
+				1B5E4A4C24F9F6C0003D8BE6 /* ChatVC.swift in Sources */,
+				1B29B2822509CFC600A4753F /* ListCar.swift in Sources */,
 				682B67782424B38E0007D3D2 /* AddDestinationConfirmBuilder.swift in Sources */,
 				AF1F891D23CF6B6F00283F1D /* PagingListView.swift in Sources */,
 				6B22BE491FB00D9D0095270F /* APIHelper.m in Sources */,
@@ -7986,6 +8444,7 @@
 				AD99FD3D242DEA2E00F4A4C5 /* AddDestinationCommunication.swift in Sources */,
 				68C173D52347235600AFC261 /* TripTrackingManager.m in Sources */,
 				6B22BE4D1FB00D9D0095270F /* FCBookConfig.m in Sources */,
+				1B29B27E2509CFC600A4753F /* ListCarContractInteractor.swift in Sources */,
 				6B22BE4E1FB00D9D0095270F /* FCDevice.m in Sources */,
 				84E31BB624750FD8004B1CE5 /* BuyPointVC.swift in Sources */,
 				EAFA8DE321A3ACE000C2FB61 /* FCManifestPredicate.m in Sources */,
@@ -7994,6 +8453,7 @@
 				AF0E58C224195A2900564A7E /* BUStationView.swift in Sources */,
 				AFF3559C23EA711700ECBE77 /* QuickSupportMainComponent+QuickSupportList.swift in Sources */,
 				6B5161C321219AF500E71F5E /* FCGGPlace.m in Sources */,
+				1B5E4A4A24F9F6C0003D8BE6 /* ChatBuilder.swift in Sources */,
 				5E2B3EB722166963004D2170 /* BankTransferInteractor.swift in Sources */,
 				6B46D6F42048F4B900B8C774 /* FCChat.m in Sources */,
 				522121B5230DBBDD00DAC84B /* DeliveryFailTableViewCell.swift in Sources */,
@@ -8007,6 +8467,7 @@
 				EA0D97F321AD17FD008D16EE /* NBPhoneNumberUtil+ShortNumber.m in Sources */,
 				EA0D97E921AD17FD008D16EE /* NSArray+NBAdditions.m in Sources */,
 				CF7610CD2193F00E00E148F5 /* Toast.swift in Sources */,
+				1BBBF6FC24F8A5440016E6AB /* CarContractBuilder.swift in Sources */,
 				526DE6C72438247700835B86 /* StatusRequestRouter.swift in Sources */,
 				6B22BE531FB00D9D0095270F /* FCCreateCarViewController.m in Sources */,
 				5275E458245834C9003E51EF /* RSListServiceComponent+RSPolicy.swift in Sources */,
@@ -8034,12 +8495,14 @@
 				6884BA2A24374E17006AC3E7 /* UIAlertViewController+CustomView.swift in Sources */,
 				AFD961A022E6173400EC2B65 /* AlertVC+NoNetwork.swift in Sources */,
 				ADA409B723FFC8F5007C9542 /* TODriverInfoView.swift in Sources */,
+				1B29B28E2509E13A00A4753F /* ListCarContractComponent+ContractDetail.swift in Sources */,
 				6B22BE561FB00D9D0095270F /* FCMColor.m in Sources */,
 				6B22BE571FB00D9D0095270F /* FCPlace.m in Sources */,
 				5275E44F24582E25003E51EF /* RSPolicyRouter.swift in Sources */,
 				6857F1F923D1635A00135136 /* InputAutoresize.swift in Sources */,
 				68413B7B242225D80027A7A8 /* Address.swift in Sources */,
 				5247C861247A985E00E0622B /* WTHistoryVC.swift in Sources */,
+				1BBBF6F124F8A4900016E6AB /* CarContractObjcWrapper.swift in Sources */,
 				CFBD272621C2777100297B09 /* TopUpByMoneyAction.swift in Sources */,
 				84C65C1A247E7EA90025814A /* RequesterObjc.swift in Sources */,
 				6829779B23FE8A5B00155C78 /* TODetailLocationProtocol.swift in Sources */,
@@ -8079,6 +8542,7 @@
 				6B22BE5C1FB00D9D0095270F /* DigitalClockViewController.m in Sources */,
 				6B22BE5D1FB00D9D0095270F /* TripWeekViewController.m in Sources */,
 				6B2B6B5E20FEE8D3008D6EFD /* DateTimeUtils.m in Sources */,
+				1BA7E6EE24FCF14100F8A69D /* ReceiptCarContractInteractor.swift in Sources */,
 				682B677A2424B38E0007D3D2 /* AddDestinationConfirmInteractor.swift in Sources */,
 				6B22BE5E1FB00D9D0095270F /* HomeViewController.m in Sources */,
 				84ED10D72473CC10006FA3DA /* WalletPointVC.swift in Sources */,
@@ -8107,6 +8571,7 @@
 				AFA96BBB241A2BEF007DEBA1 /* OrderItems.swift in Sources */,
 				681710B023FFE9F200F34034 /* TOPickupLocation.swift in Sources */,
 				6870AFB02408CB5C00CD88DE /* ReachabilityService.swift in Sources */,
+				683D13C4250F71FC008D09FE /* RequireProtocol.swift in Sources */,
 				6BFCEBAC20AF532200E4851C /* FCGGMapView.m in Sources */,
 				681710AC23FFC75100F34034 /* TOManageCommunication.swift in Sources */,
 				AFF355B623EA712A00ECBE77 /* RequestQuickSupportVC.swift in Sources */,
@@ -8128,6 +8593,7 @@
 				ADA409BC23FFCC37007C9542 /* Utils.swift in Sources */,
 				EA0D97EB21AD17FD008D16EE /* NBRegExMatcher.m in Sources */,
 				EAC8270B212C03B80004546B /* FCDriverConfig.m in Sources */,
+				1BA7E6C224FCA82500F8A69D /* FirebaseUser.swift in Sources */,
 				84BAAD37248200530020867A /* WTWithDrawSuccessInteractor.swift in Sources */,
 				AFA96B9A241A269D007DEBA1 /* SalesOrderAddress.swift in Sources */,
 				AF07930624178CAC00DA0330 /* BUMainRouter.swift in Sources */,
@@ -8174,10 +8640,13 @@
 				AF7D0DD722EA0FD1002E4A13 /* FavoritePlaceManager.swift in Sources */,
 				6B22BE751FB00D9D0095270F /* FCBplusOrder.m in Sources */,
 				AF6ABC5B230D516000B381BF /* PackageDetailVC.swift in Sources */,
+				68EA52F724ED194B001D55DE /* VatoBannerView.swift in Sources */,
 				6B22BE771FB00D9D0095270F /* IndicatorUtils.m in Sources */,
 				68B9C01123FD3B6F00E24637 /* TOShortcutTVC.swift in Sources */,
 				EA0D97ED21AD17FD008D16EE /* NBRegularExpressionCache.m in Sources */,
+				1BA7E6EC24FCF14100F8A69D /* ReceiptCarContractBuilder.swift in Sources */,
 				AFD9619122E5B2E000EC2B65 /* FavoritePlaceTableViewCell.swift in Sources */,
+				1B5E4A4E24F9F6C0003D8BE6 /* ChatInteractor.swift in Sources */,
 				6B3CEE8F20D12D8B002B3A40 /* FCNewWebViewController.m in Sources */,
 				6B3A188E1FCDC3C000AF87CC /* FCPhoneInputView.m in Sources */,
 				6B7E5A2620BCB096003CD2FB /* FCBookingRule.m in Sources */,
@@ -8193,7 +8662,10 @@
 				52F482722456BAF4008CA4C2 /* RSListServiceBuilder.swift in Sources */,
 				5EDC11E52195480900970E4D /* BankPushRow.swift in Sources */,
 				6B2071B9206DDC8200326892 /* FCMInvite.m in Sources */,
+				1BA7E6CC24FCB1C800F8A69D /* CCChatWithVatoRouter.swift in Sources */,
+				1B29B27A2509CFC600A4753F /* ListCarContractVC.swift in Sources */,
 				AF55EA2423E95A1300BB863B /* FeedbackCancelResonBuilder.swift in Sources */,
+				1BA7E6D024FCB1C800F8A69D /* CCChatWithVatoInteractor.swift in Sources */,
 				AFF3559F23EA711700ECBE77 /* QuickSupportMainVC.swift in Sources */,
 				6B22BE7D1FB00D9D0095270F /* SEFilterKnob.m in Sources */,
 				CF79250B21958E1200E9701E /* WithdrawConfirmVC.swift in Sources */,
@@ -8206,6 +8678,7 @@
 				5275E45124582E25003E51EF /* RSPolicyBuilder.swift in Sources */,
 				52F4825C24567CB0008CA4C2 /* RegisterServiceVC.swift in Sources */,
 				68B9C00B23FD3B6F00E24637 /* TOShortcutRouter.swift in Sources */,
+				1BBBF72624F8EEA80016E6AB /* ContractDetailInteractor.swift in Sources */,
 				6B8145FC208F4E60008DEBD4 /* FCBookingService.m in Sources */,
 				68B9C03323FD5E3F00E24637 /* TOShortcutComponent+QuickSupportMain.swift in Sources */,
 				6B22BE831FB00D9D0095270F /* FCMCarType.m in Sources */,
@@ -8214,6 +8687,7 @@
 				AF6ABC54230D358500B381BF /* PackageInfoVC.swift in Sources */,
 				AF1FB7E823FE7F0C009B307B /* MarketingPointCollectionViewCell.swift in Sources */,
 				AFF355BC23EA714500ECBE77 /* RequestQuickSupportImageCell.swift in Sources */,
+				1BBBF72824F8EEA80016E6AB /* ContractDetailVC.swift in Sources */,
 				6B22BE841FB00D9D0095270F /* FCZone.m in Sources */,
 				68413B4D24221A690027A7A8 /* LocationPickerRouter.swift in Sources */,
 				AF7D0DDA22EA1428002E4A13 /* BookingConfirmGradientView.swift in Sources */,
@@ -8224,6 +8698,7 @@
 				52841BFD247A1FE10013EACE /* WTWithDrawConfirmInteractor.swift in Sources */,
 				680243DF243ADA1300EFDE54 /* FCBookSupplyInfo.m in Sources */,
 				6B3A18A21FCDC40900AF87CC /* FCProgressView.m in Sources */,
+				1BA7E6BE24FBE1C000F8A69D /* ContractDetailComponent+Chat.swift in Sources */,
 				52C18D392371561600C6A6E6 /* ListDetailExpressCell.swift in Sources */,
 				681F684B2472706900D9BC5E /* WalletTableCell.swift in Sources */,
 				6B22BE851FB00D9D0095270F /* FCWebViewModel.m in Sources */,
@@ -8244,6 +8719,7 @@
 				5E2B3ED02216C261004D2170 /* BankTransferDetailBuilder.swift in Sources */,
 				68413B6724221B1C0027A7A8 /* PinAddressVC.swift in Sources */,
 				AF1FB7F123FE988F009B307B /* TaxiRequestSuccess.swift in Sources */,
+				681F8F1B250690BC00E32CFA /* Polyline.swift in Sources */,
 				EA51BCCB21A2998800558731 /* FCPromotionPopupView.m in Sources */,
 				AF1FB7E123FE7ECC009B307B /* TaxiDummyData.swift in Sources */,
 				6B46D7112048F51100B8C774 /* PTSMessagingCell.m in Sources */,
@@ -8260,16 +8736,21 @@
 				AF6D4A5323D1510100A61F63 /* AlertCustomVC.swift in Sources */,
 				ADB4C3152431E8D900D0AA19 /* AddDestinationRequestDetail.swift in Sources */,
 				EA02226A213B8722003A0ABD /* FCBankingListTableViewController.m in Sources */,
+				1BBBF70F24F8B89D0016E6AB /* CarContractView.swift in Sources */,
 				EAD284E5216616A1003DE36E /* UILabel+Link.m in Sources */,
+				1B5E4A4424F9F52D003D8BE6 /* ChatMessage.swift in Sources */,
 				AFF355BA23EA714500ECBE77 /* RequestQuickSupportCell.swift in Sources */,
 				6829778623FE764500155C78 /* TOOrderDummy.swift in Sources */,
 				6B471AE320BD664000DB8EE0 /* NSData+CRC32.m in Sources */,
 				52733C55243C7ECD00D1611B /* RequestResponseDetail.swift in Sources */,
 				6B22BE8D1FB00D9D0095270F /* SEFilterControl.m in Sources */,
+				1BA7E6CE24FCB1C800F8A69D /* CCChatWithVatoBuilder.swift in Sources */,
 				EA14B5EC2138F601001D55E0 /* FCBanking.m in Sources */,
+				1BA7E6E024FCE5C800F8A69D /* OrderContract.swift in Sources */,
 				AFF355AB23EA712100ECBE77 /* QuickSupportListBuilder.swift in Sources */,
 				5287DC5D2436EEC9005E8FE3 /* PRHeaderView.swift in Sources */,
 				AD8DD46924125ED80050C9D4 /* QuickSupportManager.swift in Sources */,
+				1B5E4A5024F9F6C0003D8BE6 /* ChatRouter.swift in Sources */,
 				6B22BE8E1FB00D9D0095270F /* NSData+Base64.m in Sources */,
 				68CB5F0A2356FEF100B7D704 /* FCBookingService+Verify.m in Sources */,
 				AFA96BB8241A28A3007DEBA1 /* MerchantCategory.swift in Sources */,
@@ -8302,10 +8783,12 @@
 				5241DE71236190E600037202 /* CreditPointsVC.swift in Sources */,
 				AF4CD3F623C5D9540039E152 /* ThemeManager.swift in Sources */,
 				68B9C01923FD3DCA00E24637 /* ShorcurtWrapperObjC.swift in Sources */,
+				1BBBF72C24F8F0A60016E6AB /* CarContractComponent+ContractDetail.swift in Sources */,
 				688CADC62403CA25001ECB21 /* TOUserPermissions.swift in Sources */,
 				6B22BE941FB00D9D0095270F /* ProfileViewController.m in Sources */,
 				5E9EED16219434C700A32576 /* BankInfoVC.swift in Sources */,
 				AF55EA2823E95A1300BB863B /* FeedbackCancelResonVC.swift in Sources */,
+				1BA7E6F724FCF47F00F8A69D /* DetailPriceView.swift in Sources */,
 				849697FC247A9F9200B8B2E2 /* TopUpStream.swift in Sources */,
 				6B22BE951FB00D9D0095270F /* UIAlertController+Blocks.m in Sources */,
 				AFF355C323EA715500ECBE77 /* QuickSupportDetailInteractor.swift in Sources */,
@@ -8343,13 +8826,16 @@
 				AFA96BA6241A269D007DEBA1 /* QuotePayments.swift in Sources */,
 				6B22BE9D1FB00D9D0095270F /* FCWebViewController.m in Sources */,
 				52841BFF247A1FE10013EACE /* WTWithDrawConfirmVC.swift in Sources */,
+				1BA7E6D524FCB2FC00F8A69D /* CarContractComponent+CCChatWithVato.swift in Sources */,
 				68413B3B24221A690027A7A8 /* SetLocationInteractor.swift in Sources */,
 				ADC0687B242A1E3A00F80C98 /* AddDestinationNewPrice.swift in Sources */,
+				1BBBF6E824F764CE0016E6AB /* WalletAccountCell.swift in Sources */,
 				CFBD270221C2020600297B09 /* WalletDetailHistoryRouter.swift in Sources */,
 				CFBD271B21C2043B00297B09 /* WalletListHistoryObjcWrapper.swift in Sources */,
 				68B9BFF923FD359F00E24637 /* VatoShorcutView.swift in Sources */,
 				6829779123FE872300155C78 /* TODetailLocationInteractor.swift in Sources */,
 				6B22BE9E1FB00D9D0095270F /* MBSliderView.m in Sources */,
+				1BA7E6D224FCB1C800F8A69D /* CCChatWithVatoVC.swift in Sources */,
 				EA14B5E82138E4E9001D55E0 /* FCBankingInfo.m in Sources */,
 				6B22BE9F1FB00D9D0095270F /* GoogleViewModel.m in Sources */,
 				526153FB2477B14F00C786D4 /* WTListBankCell.swift in Sources */,
@@ -8384,12 +8870,16 @@
 				AFD9618D22E5B2DB00EC2B65 /* UpdatePlaceViewController.swift in Sources */,
 				6B22BEA91FB00D9D0095270F /* FCInputMoneyViewController.m in Sources */,
 				AFA96BA2241A269D007DEBA1 /* QuoteAddresses.swift in Sources */,
+				1BA7E6EA24FCF14100F8A69D /* ReceiptCarContractRouter.swift in Sources */,
 				68413B4924221A690027A7A8 /* LocationPicker+PinAddress.swift in Sources */,
 				CFBD271821C2034100297B09 /* WalletTransactionsHistoryModel.swift in Sources */,
 				6B7E5A2820BCB096003CD2FB /* FCGoogleKey.m in Sources */,
+				1B29B2842509CFC600A4753F /* ListCarContractRouter.swift in Sources */,
 				CFBD270021C2020600297B09 /* WalletDetailHistoryBuilder.swift in Sources */,
 				EA14B5F12139387F001D55E0 /* FCBankingWithdrawHistoryViewController.m in Sources */,
 				AFF355C523EA715500ECBE77 /* QuickSupportDetailRouter.swift in Sources */,
+				1BBBF72424F8EEA80016E6AB /* ContractDetailBuilder.swift in Sources */,
+				1B5E4A4124F9F4E2003D8BE6 /* ChatSream.swift in Sources */,
 				6B22BEAA1FB00D9D0095270F /* TripMapViewController.m in Sources */,
 				6B22BEAB1FB00D9D0095270F /* FCConfigs.m in Sources */,
 				682B677C2424B38E0007D3D2 /* AddDestinationConfirmVC.swift in Sources */,
@@ -8398,6 +8888,7 @@
 				5247C85B247A985E00E0622B /* WTHistoryRouter.swift in Sources */,
 				6B22BEB01FB00D9D0095270F /* ZalopayUpdateViewController.m in Sources */,
 				5279862B243492CA00E06395 /* ProcessingRequestBuilder.swift in Sources */,
+				1B5E4A5324F9FE72003D8BE6 /* UserProtocol.swift in Sources */,
 				EA247BD521BF6DD60059CC2A /* FCVatoPayCoinViewController.m in Sources */,
 				6B22BEB11FB00D9D0095270F /* FirebaseDynamicLinkHelper.m in Sources */,
 				6B22BEB21FB00D9D0095270F /* AppDelegate.m in Sources */,
@@ -8429,11 +8920,13 @@
 				AFE8F59E22EAFFAC00AD7890 /* GeohashObj.swift in Sources */,
 				526153F32477B02900C786D4 /* WalletTripListBankInteractor.swift in Sources */,
 				6B22BEB51FB00D9D0095270F /* InviteFriendTableViewController.m in Sources */,
+				1BA7E6DA24FCB5A200F8A69D /* CCChatWithVatoCell.swift in Sources */,
 				AF0DF13F23FCDD6500EDC9AC /* ImagesSelectView.swift in Sources */,
 				AF43D06A23FA77910083D22B /* FoodReceivePackageObjcWrapper.swift in Sources */,
 				6B3A18901FCDC3C000AF87CC /* FCSmsCodeVerifyView.m in Sources */,
 				AF0792FE24175A1500DA0330 /* WebVC.swift in Sources */,
 				6B2071CC206DDE8500326892 /* FCNotifyBannerView.m in Sources */,
+				1BBBF6FE24F8A5440016E6AB /* CarContractInteractor.swift in Sources */,
 				6B6F65F120BAAF1200A93A46 /* FCOnlineStatus.m in Sources */,
 				AF9DDED922E7172000F14703 /* SearchPlaceViewController.swift in Sources */,
 				AFA96B622419E3D4007DEBA1 /* BUMainComponent+BUBookingDetail.swift in Sources */,
@@ -8474,6 +8967,7 @@
 				AFC5B4C8241B309E0098BB7E /* BUHistoryCellTableViewCell.swift in Sources */,
 				AFD9618722E5B2D100EC2B65 /* PinLocationVM.swift in Sources */,
 				52F4825F2456971C008CA4C2 /* TOShortcutComponent+RegisterService.swift in Sources */,
+				1B29B27C2509CFC600A4753F /* ListCarContractBuilder.swift in Sources */,
 				521ADFA3246548A200BD1B3C /* BottomCornerView.swift in Sources */,
 				5EDC11F321957A0200970E4D /* WithdrawRow.swift in Sources */,
 				AFA7E78B23FA8626000E7F89 /* FoodNoteTableViewCell.swift in Sources */,
@@ -8497,6 +8991,7 @@
 				68B57984243CD2A400CF143E /* TripNoteDetailVC.swift in Sources */,
 				AFA96B79241A257E007DEBA1 /* NoteDeliveryModel.swift in Sources */,
 				526DE6CD2438247700835B86 /* StatusRequestVC.swift in Sources */,
+				1BBBF70024F8A5440016E6AB /* CarContractVC.swift in Sources */,
 				84BAAD35248200530020867A /* WTWithDrawSuccessBuilder.swift in Sources */,
 				AF07930A24178CAC00DA0330 /* BUMainInteractor.swift in Sources */,
 				AFF355A023EA711700ECBE77 /* QuickSupportMainRouter.swift in Sources */,
@@ -8510,6 +9005,7 @@
 				6B60A9031FECBADC00ADDA06 /* FCPartnerViewController.m in Sources */,
 				6B22BEC31FB00D9D0095270F /* ProfileDetailViewController.m in Sources */,
 				6B22BEC41FB00D9D0095270F /* NavigatorHelper.m in Sources */,
+				1BA7E6F324FCF1F000F8A69D /* ContractDetailComponent+ReceiptCarContract.swift in Sources */,
 				6B6B18F020C59D07001A76B1 /* FCUCar.m in Sources */,
 				84BC76202477923700771E9F /* WalletPointComponent+LinkingCard.swift in Sources */,
 				6B22BEC51FB00D9D0095270F /* ReceiptView.m in Sources */,
@@ -8679,7 +9175,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 202008081028;
+				CURRENT_PROJECT_VERSION = 202009151004;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = UT924RYDJ3;
@@ -8776,7 +9272,7 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Libs",
 				);
-				MARKETING_VERSION = 5.17.0;
+				MARKETING_VERSION = 5.17.2;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -8917,7 +9413,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 202008081028;
+				CURRENT_PROJECT_VERSION = 202009151004;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = UT924RYDJ3;
 				ENABLE_BITCODE = NO;
@@ -9013,7 +9509,7 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Libs",
 				);
-				MARKETING_VERSION = 5.17.0;
+				MARKETING_VERSION = 5.17.2;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -9152,7 +9648,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 202008081028;
+				CURRENT_PROJECT_VERSION = 202009151004;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = UT924RYDJ3;
@@ -9206,7 +9702,7 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Libs",
 				);
-				MARKETING_VERSION = 5.17.0;
+				MARKETING_VERSION = 5.17.1;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -9346,7 +9842,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 202008081028;
+				CURRENT_PROJECT_VERSION = 202009151004;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = UT924RYDJ3;
 				ENABLE_BITCODE = NO;
@@ -9399,7 +9895,7 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Libs",
 				);
-				MARKETING_VERSION = 5.17.0;
+				MARKETING_VERSION = 5.17.1;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"$(inherited)",

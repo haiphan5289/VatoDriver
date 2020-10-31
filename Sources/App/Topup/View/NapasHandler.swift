@@ -13,21 +13,6 @@ import FwiCore
 import FwiCoreRX
 import Alamofire
 
-struct TopUpAtmResponse: Codable {
-    var apiOperation: String?
-    var clientIp: String?
-    var dataKey: String?
-    var merchantId: String?
-    var napasKey: String?
-    var orderDetail: String?
-    var orderId: String?
-    var orderToken: String?
-    var redirectUrl: String?
-    var result: String?
-    var transactionId: String?
-    var html: String?
-}
-
 extension TopUpAtmResponse {
     
     func getHtmlString() -> String {

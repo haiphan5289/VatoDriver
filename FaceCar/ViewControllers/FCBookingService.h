@@ -18,11 +18,12 @@
 @property (strong, nonatomic) FIRDatabaseReference* refHistory;
 @property (strong, nonatomic) FCHomeViewModel* homeViewModel;
 @property (strong, nonatomic) FCBookCommand* currentStatus;
-
+@property (strong, nonatomic) NSMutableDictionary *cachedDecision;
 + (instancetype) shareInstance;
 + (void) removeInstance;
 - (RACSignal *)checkWaitingStatus:(BookStatus)status;
 - (RACSignal *)loadCurrentTrip;
+- (RACSignal *)changePaymentMethod;
 - (void) createDigitalBookingData;
 - (void) sendingBooking: (FCBooking*) book
                complete: (void (^)(NSError* error))block;

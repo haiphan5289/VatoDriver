@@ -155,6 +155,17 @@ struct PaymentCardDetail: Codable, PaymentCardDisplay, PaymentMethodIdentifierPr
     var nameOnCard: String?
     var params: JSON?
     var enable3d: Bool = false
+    
+    var cardScheme: String? {
+        switch type {
+        case .visa, .master:
+            return "CreditCard"
+        case .atm:
+            return "AtmCard"
+        default:
+            return nil
+        }
+    }
         
 //    init(presenter: BuyPointPresentable, list: [TopUpMethod]) {
 //        self.listTopUpMethod = list

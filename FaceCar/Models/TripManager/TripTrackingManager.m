@@ -14,6 +14,7 @@
 @property (strong, nonatomic) RACSubject *mBookInfoSignal;
 @property (strong, nonatomic) RACSubject *mBookExtraSignal;
 @property (strong, nonatomic) RACSubject *mBookEstimateSignal;
+@property (strong, nonatomic) RACSubject *mPaymentMethodSignal;
 @property (strong, nonatomic) NSMutableDictionary *backupInfo; // Use in case can't update firestore
 @end
 
@@ -30,6 +31,7 @@
         self.mBookInfoSignal = [RACSubject new];
         self.mBookExtraSignal = [RACSubject new];
         self.mBookEstimateSignal = [RACSubject new];
+        self.mPaymentMethodSignal = [RACSubject new];
         self.documentRef = [[FIRFirestore firestore] documentWithPath:[NSString stringWithFormat:@"Trip/%@", tripId]];
         self.tripNotifyRef = [[FIRFirestore firestore] collectionWithPath:TABLE_TRIP_NOTIFY];
         self.backupInfo = [NSMutableDictionary new];
@@ -65,7 +67,7 @@
     [_mBookInfoSignal sendCompleted];
     [_mBookExtraSignal sendCompleted];
     [_mBookEstimateSignal sendCompleted];
-    
+    [_mPaymentMethodSignal sendCompleted];
 }
 
 - (void)stopListen {
@@ -81,7 +83,6 @@
         @weakify(self);
         id<FIRListenerRegistration> handler = [self.documentRef addSnapshotListenerWithIncludeMetadataChanges:YES listener:^(FIRDocumentSnapshot * _Nullable snapshot, NSError * _Nullable error) {
             @strongify(self);
-//        [self.documentRef addSnapshotListener:^(FIRDocumentSnapshot * _Nullable snapshot, NSError * _Nullable error) {
             if (snapshot == nil) {
                 NSError *e = [NSError errorWithDomain:NSURLErrorDomain code:NSURLErrorUnknown userInfo:@{ NSLocalizedDescriptionKey: @"Delete"}];
                 [subscriber sendError:e];
@@ -113,10 +114,15 @@
     [_mBookInfoSignal sendNext:_book.info];
     [_mBookExtraSignal sendNext:_book.extra];
     [_mBookEstimateSignal sendNext:_book.estimate];
+    [_mPaymentMethodSignal sendNext:@(_book.info.payment)];
 }
 
 
 #pragma mark - Publish
+- (RACSignal *)paymentMethodSignal {
+   return [[_mPaymentMethodSignal distinctUntilChanged] deliverOn:[RACScheduler mainThreadScheduler]];
+}
+
 - (RACSignal *)bookEstimateSignal {
     return [[_mBookEstimateSignal distinctUntilChanged] deliverOn:[RACScheduler mainThreadScheduler]];
 }

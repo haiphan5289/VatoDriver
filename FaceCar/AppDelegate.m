@@ -127,9 +127,10 @@ NSInteger const zaloPayId = ZALOPAY_APPID;
     [self connectToFcm];
     
     [[APICall shareInstance] checkingNetwork];
+    AVAudioSession *session = [AVAudioSession sharedInstance];
+    [session setActive:YES error:nil];
+    [session setCategory:AVAudioSessionCategoryPlayback error:nil];
     
-    [[AVAudioSession sharedInstance] setActive:YES
-                                         error:nil];
     return YES;
 }
 

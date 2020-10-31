@@ -16,6 +16,7 @@
 #import "VATO_Driver-Swift.h"
 #endif
 #import "BookViewController.h"
+NSString *DriverWantToCancelTripNotification = @"DriverWantToCancelTripNotification";
 @import FirebaseAnalytics;
 @interface FCBookingService (Checking)
 @property (strong, nonatomic) TripTrackingManager *tripTracking;
@@ -102,12 +103,55 @@
         }
     }
     // Cập nhật status mới
-    [self processUpdateStatus:status book:book];
-    if (complete) { complete(YES); }
+    [self processUpdateStatus:status book:book complete:complete];
 }
+
+- (NSString *)methodName:(NSInteger)type {
+    switch (type) {
+        case PaymentMethodCash:
+            return @"CASH";
+        case PaymentMethodVATOPay:
+            return @"WALLET";
+        case PaymentMethodVisa:
+            return @"VISA";
+        case PaymentMethodMastercard:
+            return @"MASTER";
+        case PaymentMethodATM:
+            return @"ATM";
+        case PaymentMethodMomo:
+            return @"MOMO";
+        case PaymentMethodZaloPay:
+            return @"ZALOPAY";
+        default:
+            return nil;
+    }
+}
+
+- (NSString *)methodDescription:(NSInteger)type {
+    switch (type) {
+        case PaymentMethodCash:
+            return @"Tiền mặt";
+        case PaymentMethodVATOPay:
+            return @"VATOPay";
+        case PaymentMethodVisa:
+            return @"Thẻ visa/master";
+        case PaymentMethodMastercard:
+            return @"Thẻ visa/master";
+        case PaymentMethodATM:
+            return @"Thẻ ATM";
+        case PaymentMethodMomo:
+            return @"Momo";
+        case PaymentMethodZaloPay:
+            return @"ZaloPay";
+        default:
+            return nil;
+    }
+}
+
 
 - (void) processUpdateStatus: (NSInteger) status
                         book: (FCBooking*) book
+                    complete: (void (^) (BOOL success)) complete
 {
     
     // status
@@ -119,6 +163,10 @@
                         parameters:@{@"book_id": tripId,
                                      @"command": @(status).stringValue }];
     @weakify(self);
+    void(^CompleteUpdate)(void) = ^{
+        if (complete) { complete(YES); }
+    };
+    
     void(^removeTrip)(void) = ^{
         [TripListenNewTripManager setDataTripNotify:book.info.tripId json:@{} completion:^(NSError * _Nullable error) {
             if (error) {
@@ -133,6 +181,7 @@
                             parameters:@{@"book_id": tripId,
                                          @"command": @(status).stringValue }];
         [self.updateCommand sendNext:stt];
+        CompleteUpdate();
         if (status == 14) {
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 removeTrip();
@@ -140,15 +189,15 @@
         }
     };
     
-    
-    
     // New flow: Update api -> agree, cancel, ignore
     BOOL(^CheckCallApi)(NSInteger) = ^BOOL(NSInteger s) {
         return s == BookStatusDriverAccepted || s == BookStatusDriverCancelInBook || s == BookStatusDriverMissing;
     };
+    
     BOOL callAPI = CheckCallApi(status);
     void(^BlockError)(NSError *) = ^(NSError *error){
         @strongify(self);
+        CompleteUpdate();
         NSString *message = error.localizedDescription ?: @"";
         [FIRAnalytics logEventWithName:@"driver_update_command_fail"
                             parameters:@{@"book_id": tripId,
@@ -195,8 +244,6 @@
     };
     
     if (callAPI) {
-        NSString *token = [[FirebaseTokenHelper instance] token];
-        NSString *tripId = book.info.tripId ?: @"";
         NSString *path = [NSString stringWithFormat:@"trip/%@/confirmations", tripId];
         NSMutableDictionary *params = [NSMutableDictionary new];
         [params addEntriesFromDictionary:@{@"status" : @(status)}];
@@ -205,10 +252,14 @@
         NSDictionary *l = @{@"location": @{ @"lat": @(coordinate.latitude),
                                             @"lon": @(coordinate.longitude)} };
         [params addEntriesFromDictionary:l];
-        Boolean isAutoAcceptTrip = [[AutoReceiveTripManager shared] flagAutoReceiveTripManager];
+        BOOL isAutoAcceptTrip = [[AutoReceiveTripManager shared] flagAutoReceiveTripManager];
         NSDictionary *isAutoAccept = @{@"isAutoAcceptTrip": @(isAutoAcceptTrip)};
         [params addEntriesFromDictionary:isAutoAccept];
-        [[RequesterObjc instance] requestWithToken:token path:path method:@"POST" header:nil params:params trackProgress:NO handler:^(NSDictionary<NSString *,id> * _Nullable r, NSError * _Nullable e) {
+        
+        [self request:path method:@"POST"
+               header:nil
+               params:params
+             complete:^(NSDictionary *r, NSError *e) {
             if (e) {
                 BlockError(e);
                 return;
@@ -225,11 +276,30 @@
                 BlockError(err);
                 return;
             }
-            
             BlockSuccess();
         }];
         return;
     }
+    
+    
+    BOOL needCheck;
+    if (book.info.serviceId == 128) {
+        needCheck = status == BookStatusDeliveryReceivePackageSuccess;
+    } else {
+        needCheck = status == BookStatusStarted && book.info.serviceId < 512;
+    }
+    
+    // Check payment method
+    if (needCheck && book.info.payment != PaymentMethodCash) {
+        [self requestChargeMethod:tripId
+                           method:book.info.payment
+                           status:status
+                     moveToInTrip:YES
+                         complete:complete];
+        return;
+    }
+    
+    // Check cancel trip
     
     
     // Old flow
@@ -248,4 +318,166 @@
         BlockError(error);
     }];
 }
+
+- (NSString *)pathConfirm:(NSString *)tripId {
+    NSString *path = [NSString stringWithFormat:@"trip/%@/pickup-confirmations", tripId];
+    return path;
+}
+
+- (NSDictionary *)paramsConfirm:(PaymentMethod)method
+                         status:(NSInteger)status
+{
+    NSMutableDictionary *params = [NSMutableDictionary new];
+    BOOL isAutoAcceptTrip = [[AutoReceiveTripManager shared] flagAutoReceiveTripManager];
+    [params addEntriesFromDictionary:@{@"status" : @(status),
+                                       @"auto_accept": @(isAutoAcceptTrip)}];
+    CLLocation *location = [[VatoLocationManager shared] location];
+    CLLocationCoordinate2D coordinate = location.coordinate;
+    NSString *geohash = [GeohashObj encodeWithLatitude:coordinate.latitude
+                                             longitude:coordinate.longitude
+                                                length:7];
+    
+    NSDictionary *l = @{@"location": @{ @"geohash" : geohash ?: @"",
+                                        @"lat": @(coordinate.latitude),
+                                        @"lon": @(coordinate.longitude)}};
+    [params addEntriesFromDictionary:l];
+    NSString *methodName = [self methodName:method];
+    if (methodName) {
+        [params addEntriesFromDictionary:@{ @"payment_method": methodName}];
+    }
+    
+    return params;
+}
+
+
+- (void)requestChargeMethod:(NSString *)tripId
+                     method:(PaymentMethod)method
+                     status:(NSInteger)status
+               moveToInTrip:(BOOL) inTrip
+                   complete: (void (^)(BOOL success))complete
+{
+    NSString *path = [self pathConfirm:tripId];
+    NSDictionary *params;
+    BOOL accept = NO;
+    if ([self.cachedDecision objectForKey:tripId] != nil) {
+        accept = YES;
+        params = [self paramsConfirm:PaymentMethodCash status:status];
+    } else {
+        params = [self paramsConfirm:method status:status];
+    }
+    
+    void(^Complete)(BOOL) = ^(BOOL value){
+        if (complete) {
+            complete(value);
+        }
+    };
+    
+    void(^BlockError)(NSError *) = ^(NSError *error){
+        NSString *message;
+        NSString *title;
+        NSArray *buttonNames;
+        if (accept) {
+            title = @"Thông báo";
+            message = error.localizedDescription;
+            buttonNames = @[@"Đồng ý"];
+        } else {
+            title = [@"Thông báo thanh toán tiền mặt" uppercaseString];
+            NSString *methodDes = [self methodDescription:method];
+            message = [NSString stringWithFormat:@"Không thể thực hiện thanh toán qua %@ của khách hàng. Vui lòng thông báo với khách hàng thanh toán bằng tiền mặt để tiếp tục chuyến đi", methodDes ?: @""];
+            buttonNames = @[@"Huỷ chuyến đi này", @"Đồng ý, thanh toán tiền mặt"];
+        }
+        
+        
+        UIViewController *(^TopControllerVC)(void) = ^UIViewController *{
+            UIViewController *rootVC = [[[UIApplication sharedApplication] keyWindow] rootViewController];
+            UIViewController *resultVC = [UIApplication topViewControllerWithController:rootVC];
+            return resultVC;
+        };
+        
+        void(^showAlert)(void) = ^{
+            UIViewController *topVC = TopControllerVC();
+            if (!topVC) {
+                return;
+            }
+            [UIAlertController showInViewController:topVC
+                                          withTitle:title
+                                            message:message
+                                     preferredStyle:UIAlertControllerStyleAlert
+                                  cancelButtonTitle:nil
+                             destructiveButtonTitle:nil
+                                  otherButtonTitles:buttonNames
+                 popoverPresentationControllerBlock:nil tapBlock:^(UIAlertController * _Nonnull controller, UIAlertAction * _Nonnull action, NSInteger buttonIndex) {
+                if (accept) {
+                    Complete(NO);
+                    return;
+                }
+                
+                NSString *nameAction;
+                if (buttonIndex == 2) {
+                    nameAction = @"driver_cancel_trip_change_method";
+                    [self.cachedDecision addEntriesFromDictionary:@{tripId: @(NO)}];
+                    [self requestChargeMethod:tripId
+                          method:PaymentMethodCash
+                          status:BookStatusDriverCancelIntrip
+                    moveToInTrip:NO
+                        complete:complete];
+                } else {
+                    nameAction = @"driver_accept_trip_change_method";
+                    [self.cachedDecision addEntriesFromDictionary:@{tripId: @(YES)}];
+                    Complete(NO);
+                }
+                
+                [FIRAnalytics logEventWithName:nameAction
+                                    parameters:@{@"book_id": tripId,
+                             @"command": @(status).stringValue}];
+            }];
+        };
+        
+        showAlert();
+    };
+    [IndicatorUtils show];
+    [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
+    [self request:path method:@"POST"
+           header:nil
+           params:params
+         complete:^(NSDictionary *response, NSError *error)
+    {
+        [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+        [IndicatorUtils dissmiss];
+        if (error) {
+            BlockError(error);
+            return;
+        }
+        NSError *err;
+        FCResponse *res = [[FCResponse alloc] initWithDictionary:response ?: @{} error:&err];
+        if (err) {
+            BlockError(err);
+            return;
+        }
+        
+        if (res.status == 200) {
+            Complete(inTrip);
+        } else {
+            err = [[NSError alloc] initWithDomain:NSURLErrorDomain code:NSURLErrorUnknown userInfo:@{NSLocalizedDescriptionKey: res.message ?: @""}];
+            BlockError(err);
+        }
+    }];
+}
+
+- (void)request:(NSString *)path
+         method:(NSString *)method
+         header:(NSDictionary<NSString *, NSString *> *)header
+         params:(NSDictionary *)params
+       complete:(void (^) (NSDictionary *response, NSError *error))complete {
+    NSString *token = [[FirebaseTokenHelper instance] token];
+    [[RequesterObjc instance] requestWithToken:token
+                                          path:path
+                                        method:method
+                                        header:header
+                                        params:params
+                                 trackProgress:NO
+                                       handler:complete];
+    
+}
+
 @end

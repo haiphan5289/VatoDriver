@@ -21,6 +21,7 @@ class NoteTableViewCell: Eureka.Cell<String>, CellType {
     typealias Value = String
     @IBOutlet weak var imgCheck: UIImageView!
     @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var lbTitle: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

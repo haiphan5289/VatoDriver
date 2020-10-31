@@ -40,40 +40,39 @@ lane :dev do
       release_notes: notes,
       groups: "Tester"
   )
+  branchName = git_branch
+  discord_notifier(
+    webhook_url:"https://discordapp.com/api/webhooks/747357316730322998/advqE-gmaO2hsd5vM61FgYTiIBHIvmGE56rT0zuL6k6e-8C7YYJnPBc5iJWeiiCsCAL1",
+    title: "iOS Driver DEV new build",
+    description: "A DEV version",
+    fields:[
+      {
+         name: "App Type",
+         value: "Driver Dev"
+      },
+      {
+          name: "Branch",
+          value: branchName
+      },
+      {
+          name: "Where",
+          value: "Firebase App Distribution"
+      },
+      {
+         name: "App Version",
+         value: version
+      },
+      {
+          name: "Build number",
+          value: build_number
+      },
+      {
+          name: "Release Notes",
+          value: notes
+      }
+    ]
+  )
 
-  slack(
-       message: "iOS Driver DEV new build",
-       success: true,
-       slack_url: "https://hooks.slack.com/services/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",
-       payload: {
-         "channel": "@channel"
-       },
-       default_payloads: [:git_branch, :last_git_commit_message],
-       attachment_properties: {
-           fields: [
-               {
-                  title: "App Type",
-                  value: "Driver DEV"
-               },
-               {
-                   title: "Where",
-                   value: "Firebase App Distribution"
-               },
-               {
-                  title: "App Version",
-                  value: version
-               },
-               {
-                   title: "Build number",
-                   value: build_number
-               },
-               {
-                   title: "Release Notes",
-                   value: notes
-               }
-           ]
-       }
-   )
 end
 
 lane :production do
@@ -101,39 +100,39 @@ lane :production do
       groups: "Tester"
   )
 
-  slack(
-       message: "iOS Driver Pro new build",
-       success: true,
-       slack_url: "https://hooks.slack.com/services/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",
-       payload: {
-         "channel": "@channel"
-       },
-       default_payloads: [:git_branch, :last_git_commit_message],
-       attachment_properties: {
-           fields: [
-               {
-                  title: "App Type",
-                  value: "Driver Pro"
-               },
-               {
-                   title: "Where",
-                   value: "Firebase App Distribution"
-               },
-               {
-                  title: "App Version",
-                  value: version
-               },
-               {
-                   title: "Build number",
-                   value: build_number
-               },
-               {
-                   title: "Release Notes",
-                   value: notes
-               }
-           ]
-       }
-   )
+  branchName = git_branch
+  discord_notifier(
+    webhook_url:"https://discordapp.com/api/webhooks/747357316730322998/advqE-gmaO2hsd5vM61FgYTiIBHIvmGE56rT0zuL6k6e-8C7YYJnPBc5iJWeiiCsCAL1",
+    title: "iOS Driver Pro new build",
+    description: "A Pro version",
+    fields:[
+      {
+         name: "App Type",
+         value: "Driver Pro"
+      },
+      {
+          name: "Branch",
+          value: branchName
+      },
+      {
+          name: "Where",
+          value: "Firebase App Distribution"
+      },
+      {
+         name: "App Version",
+         value: version
+      },
+      {
+          name: "Build number",
+          value: build_number
+      },
+      {
+          name: "Release Notes",
+          value: notes
+      }
+    ]
+  )
+
 end
 
 lane :release do

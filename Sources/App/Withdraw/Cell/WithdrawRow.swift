@@ -36,10 +36,11 @@ final class WithdrawRow: MasterFieldRow<WithdrawCell>, RowType {
     }
     
     func formatPointCell() {
-        let currencyFormat = NumberFormatter()
-        currencyFormat.groupingSeparator = ","
-        currencyFormat.numberStyle = .decimal
-        formatter = currencyFormat
+        let numberFormat = NumberFormatter()
+        numberFormat.groupingSeparator = ","
+        numberFormat.numberStyle = .decimal
+        numberFormat.allowsFloats = false
+        formatter = numberFormat
     }
         
     func update(by items: [Double]?, isPrice: Bool = true) {

@@ -72,7 +72,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<string>202009151004</string>
 	<key>FIRAnalyticsDebugEnabled</key>
 	<true/>
 	<key>Fabric</key>

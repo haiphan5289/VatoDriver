@@ -285,9 +285,9 @@ private extension BuyPointVC {
                 var tumethod: TopupCellModel?
                 if let tu_model = model as? TopUpMethod{
                     tumethod = convertTopUpMethodToModel(method: tu_model)
-                    if idx == 0 {
-                        tumethod?.card?.number = "Số dư khả dụng: " +  (balance?.hardCash ?? 0).currency
-                    }
+//                    if idx == 0 {
+//                        tumethod?.card?.number = "Số dư khả dụng: " +  (balance?.hardCash ?? 0).currency
+//                    }
                 }
                 if let ca_model = model as? Card  {
                     tumethod = convertCardToModel(card: ca_model)

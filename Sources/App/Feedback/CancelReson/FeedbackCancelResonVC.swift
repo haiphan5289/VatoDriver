@@ -276,9 +276,10 @@ private extension FeedbackCancelResonVC {
         }
         
         data.forEach { model in
-            if model.id == 0 {
+            if model.id == -1 {
                 section <<< NoteCellEureka.init(FoodReceivePackageCellType.note.rawValue, { (row) in
                     row.cell.backgroundColor = self.listener?.type.backgroundColor() ?? #colorLiteral(red: 0.9490196078, green: 0.9490196078, blue: 0.9490196078, alpha: 1)
+                    row.cell.lbTitle.text = model.description
                     row.cell.textView.rx.text.bind { (value) in
                         let text = value ?? ""
                         self.submitBtn?.isEnabled = !(text.trim()).isEmpty

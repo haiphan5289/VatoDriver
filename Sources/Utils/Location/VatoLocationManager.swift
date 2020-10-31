@@ -25,11 +25,40 @@ final class VatoLocationManager: CLLocationManager, Weakifiable {
     private lazy var disposeBag = DisposeBag()
     private var disposeKeepAlive: Disposable?
     private var current: Date?
+    @Replay(queue: MainScheduler.asyncInstance) private var geoHashLenght: Int?
     
     override init() {
         super.init()
         configure()
         requestAlwaysAuthorization()
+    }
+    
+    func loadLenghtGeohash() {
+        let documentRef = Firestore.firestore().documentRef(collection: .configData, storePath: .custom(path: "Client"), action: .read)
+        documentRef.find(action: .get, json: nil).bind(onNext: weakify({ (snapshot, wSelf) in
+            let geoHashLenght: Int? = snapshot?.data()?.value("promotionNewsGeohashLength", defaultValue: nil)
+            wSelf.geoHashLenght = geoHashLenght
+        })).disposed(by: disposeBag)
+    }
+    
+    func geoHash() -> Observable<String?> {
+        $geoHashLenght.take(1).flatMap { (lenght) -> Observable<String?> in
+            if let lenght = lenght,
+                let coord = self.location?.coordinate
+            {
+                return Observable.create { (s) -> Disposable in
+                    let queue = DispatchQueue(label: "com.vato.encodeGeohash", qos: .default)
+                    queue.async {
+                        let result = Geohash.encode(latitude: coord.latitude, longitude: coord.longitude, length: lenght)
+                        s.onNext(result)
+                        s.onCompleted()
+                    }
+                    return Disposables.create()
+                }
+            } else {
+                return Observable.just(nil)
+            }
+        }
     }
     
     private func configure() {

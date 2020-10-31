@@ -9,7 +9,6 @@
 #import "FCBookingService.h"
 
 NS_ASSUME_NONNULL_BEGIN
-
 @interface FCBookingService (UpdateStatus)
 - (void) updateBookStatus: (NSInteger) status
                  complete: (void (^) (BOOL success)) complete;

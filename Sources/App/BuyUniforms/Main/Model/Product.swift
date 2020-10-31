@@ -6,8 +6,9 @@
 //  Copyright © 2019 Vato. All rights reserved.
 //
 
-import Foundation
-
+import UIKit
+import Atributika
+import FwiCore
 
 enum ProductType: String {
     case SIMPLE = "SIMPLE"
@@ -20,21 +21,21 @@ struct DisplayProductCategory: Codable {
 }
 
 struct DisplayProduct : Codable, Equatable, StoreProductDisplayProtocol, Hashable {
-    let productId : Int?
-    let productName : String?
+    var productId : Int?
+    var productName : String?
     var productPrice : Double?
-    let images : [String]?
-    let productDescription : String?
-    let productIsOpen : Bool?
-    let category : Int?
-    let sku : String?
-    let specialPrice : Double?
-    let finalPrice : Double?
-    let isPromo : Bool?
-    let specialFromDate : String?
-    let specialToDate : String?
-    let qty : Int?
-    let status : Int?
+    var images : [String]?
+    var productDescription : String?
+    var productIsOpen : Bool?
+    var category : Int?
+    var sku : String?
+    var specialPrice : Double?
+    var finalPrice : Double?
+    var isPromo : Bool?
+    var specialFromDate : String?
+    var specialToDate : String?
+    var qty : Int?
+    var status : Int?
     
     var name: String? {
         return productName
@@ -75,6 +76,8 @@ struct DisplayProduct : Codable, Equatable, StoreProductDisplayProtocol, Hashabl
         case status = "status"
     }
     
+    init() {}
+    
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         productId = try values.decodeIfPresent(Int.self, forKey: .productId)
@@ -112,6 +115,86 @@ struct DisplayProduct : Codable, Equatable, StoreProductDisplayProtocol, Hashabl
         } else {
             return true
         }
+    }
+}
+
+extension DisplayProduct {
+    init?(order: OrderItem?) {
+        guard let order = order else { return nil }
+        var item = DisplayProduct()
+        item.productId = order.productId
+        item.productName = order.name
+        item.productPrice = Double(order.basePrice ?? 0)
+        var images: [String] = []
+        images.addOptional(order.images)
+        item.images = images
+        item.finalPrice = Double(order.basePriceInclTax ?? 0)
+        self = item
+    }
+    
+    init(quoteItem: QuoteItem) {
+        var item = DisplayProduct()
+        var images: [String] = []
+        images.addOptional(quoteItem.images?.trim())
+        item.images = images
+        item.productId = quoteItem.productId
+        item.productName = quoteItem.name
+        item.productPrice = quoteItem.basePrice
+        item.finalPrice = quoteItem.basePriceInclTax ?? 0
+        self = item
+    }
+}
+
+
+protocol EcomDisplayProductProtocol {
+    associatedtype Value
+    var lblNote: UILabel? { get }
+    func displayDetail(item: Value)
+}
+
+extension EcomDisplayProductProtocol {
+    func display(productOptionDesription: String?,
+                 note: String?,
+                 product: DisplayProduct)
+    {
+        let s1 = productOptionDesription
+        var s2 = ""
+        if let t = note, !t.isEmpty {
+            s2 = "\(FwiLocale.localized("Ghi chú")): \(t)"
+        }
+        var s3 = ""
+//        if product.productPrice != product.finalPrice {
+//            s3 = "<b>\(product.productPrice.orNil(0).currency)</b>"
+//        }
+        let final = String.makeStringWithoutEmpty(from: s1, s2, s3, seperator: "\n")
+        let b = Atributika.Style("b").strikethroughStyle(.single)
+        let p1 = NSMutableParagraphStyle()
+        p1.alignment = .left
+        p1.lineSpacing = 4
+        let all = Atributika.Style()
+            .font(.systemFont(ofSize: 13, weight: .regular))
+            .foregroundColor(#colorLiteral(red: 0.3882352941, green: 0.4470588235, blue: 0.5019607843, alpha: 1))
+            .paragraphStyle(p1)
+        let att = final.style(tags: b).styleAll(all).attributedString
+        lblNote?.attributedText = att
+    }
+}
+
+extension EcomDisplayProductProtocol where Value == OrderItem {
+    func displayDetail(item: OrderItem) {
+        let s = item.productOptions?.map(\.description).joined(separator: "\n")
+        guard let product = DisplayProduct(order: item) else {
+            return
+        }
+        self.display(productOptionDesription: s, note: item.description, product: product)
+    }
+}
+
+extension EcomDisplayProductProtocol where Value == QuoteItem {
+    func displayDetail(item: QuoteItem) {
+        let product = DisplayProduct(quoteItem: item)
+        let s = item.quoteItemOptions?.map(\.description).joined(separator: "\n")
+        self.display(productOptionDesription: s, note: item.description, product: product)
     }
 }
 

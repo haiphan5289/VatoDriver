@@ -76,15 +76,7 @@ class TripMapInfoView: UIView, UpdateDisplayProtocol, Weakifiable {
     
    @objc func setupDisplay(item: FCBooking?) {
         self.booking = item
-        if let booking = self.booking {
-//            var _source = [TripMapLocationModel.initStartLocation(bookInfo: booking.info)]
-//            if let endLocation = TripMapLocationModel.initDestinationLocation(bookInfo: booking.info) {
-//                _source.append(endLocation)
-//            }
-//            self.source = _source
-//
-//
-//            self.locationTableView.reloadData()
+        if self.booking != nil {
             self.requestTripDetail()
         }
     }
@@ -197,7 +189,7 @@ class TripMapInfoView: UIView, UpdateDisplayProtocol, Weakifiable {
                 let bookPrice = booking.info.getBookPrice()
                 let offerPrice = bookPrice + booking.info.additionPrice
 
-            if (hideTarget && !started) {
+            if (hideTarget) {
                 self.lblPrice.text = ""
                 self.viewPrice.isHidden = true
             } else {
@@ -224,12 +216,14 @@ class TripMapInfoView: UIView, UpdateDisplayProtocol, Weakifiable {
     }
     
     func useLast() {
-        guard !source.isEmpty else { return }
+        defer {
+            self.locationTableView?.reloadData()
+        }
+        guard !source.isEmpty, source.count > 1 else { return }
         var newSource = source
         isUseLast = true
         newSource.removeFirst()
         source = newSource
-        self.locationTableView?.reloadData()
     }
     
     @objc func updateLastPriceView(price: NSInteger) {

@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (readonly, nonatomic) RACSignal *bookInfoSignal;
 @property (readonly, nonatomic) RACSignal *bookExtraSignal;
 @property (readonly, nonatomic) RACSignal *bookEstimateSignal;
+@property (readonly, nonatomic) RACSignal *paymentMethodSignal;
 - (instancetype)init:(NSString *)tripId;
 - (void)clearTripAllow;
 - (void)setDataTripNotify:(NSString *)tripId

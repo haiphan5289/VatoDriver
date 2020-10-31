@@ -36,6 +36,7 @@ struct QuoteItem : Codable, Equatable {
 	let available : Bool?
 	let appliedRuleIds : String?
 	let quoteItemOptions : [String]?
+    let images: String?
 
 	enum CodingKeys: String, CodingKey {
 
@@ -62,6 +63,7 @@ struct QuoteItem : Codable, Equatable {
 		case available = "available"
 		case appliedRuleIds = "appliedRuleIds"
 		case quoteItemOptions = "quoteItemOptions"
+        case images
 	}
 
 	init(from decoder: Decoder) throws {
@@ -89,6 +91,7 @@ struct QuoteItem : Codable, Equatable {
 		available = try values.decodeIfPresent(Bool.self, forKey: .available)
 		appliedRuleIds = try values.decodeIfPresent(String.self, forKey: .appliedRuleIds)
 		quoteItemOptions = try values.decodeIfPresent([String].self, forKey: .quoteItemOptions)
+        images = try values.decodeIfPresent(String.self, forKey: .images)
 	}
 
     static func == (lhs: QuoteItem, rhs: QuoteItem) -> Bool {

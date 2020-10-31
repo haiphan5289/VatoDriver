@@ -422,7 +422,7 @@ private extension WalletAddNewBankVC {
             }
         })
         
-        section <<< RowDetailGeneric<RequestQuickSupportInputCell>.init(QSFillInformationCellType.title.rawValue, { (row) in
+        section <<< RowDetailGeneric<WalletAccountNameCell>.init(QSFillInformationCellType.title.rawValue, { (row) in
             row.cell.update(title: "Tên chủ tài khoản", placeHolder: self.userBank?.accountName ?? self.displayName)
             row.add(ruleSet: NewBankAccountRules.rules())
             row.add(rule: RuleMinLength(minLength: 5, msg: "Thông tin tối thiểu 5 ký tự.", id: "min required"))
@@ -432,8 +432,9 @@ private extension WalletAddNewBankVC {
                 row.cell.textField.isEnabled = (user.verified ?? false) ? false : true
                 row.cell.textField.textColor = (user.verified ?? false) ? #colorLiteral(red: 0.3882352941, green: 0.4470588235, blue: 0.5019607843, alpha: 1) : .black
             } else {
-                row.value = ""
+                row.value = self.displayName
             }
+            row.cell.textField.isUserInteractionEnabled = false
             row.cell.textField.rx.text.bind { [weak self] (_) in
                 guard let wSelf = self else { return }
                 wSelf.listener?.userAddBank.accountName = row.value ?? ""

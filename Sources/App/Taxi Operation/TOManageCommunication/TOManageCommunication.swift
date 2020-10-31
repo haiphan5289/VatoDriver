@@ -233,6 +233,7 @@ final class TOManageCommunication: NSObject, TOManageCommunicationRequireInfoPro
     @VariableReplay(wrappedValue: nil) private (set) var user: VatoDriverProtocol?
     
     @VariableReplay(wrappedValue: []) var mNotifications: [NotifyTaxi]
+    @Replay(queue: MainScheduler.asyncInstance) private var mCountContract: Int
     
     
     private (set) var manageTimer: [Int: BehaviorRelay<TOCountDown>] = [:]
@@ -281,6 +282,46 @@ extension TOManageCommunication: TOManageCommunicationServiceProtocol {
             }
             add(dispose)
         }
+    func fireStoreNotify() {
+        guard let id = UserManager.shared.getUserId() else {
+            return
+        }
+        let collectionRef = Firestore.firestore().collection(collection: .notifications, .custom(id: "\(id)"), .custom(id: "driver"))
+            .whereField("type", isEqualTo: "CAR_RENTAL_ORDER")
+        collectionRef.listenChanges().map { $0[.added] }.filterNil().bind { (data) in
+            self.getListContractActive()
+        }.disposed(by: disposeBag)
+    }
+    private func getListContractActive() {
+                   let p: [String: Any] = ["page": 0, "size": 10, "filter": "ACTIVE"]
+                    let url = TOManageCommunication.Configs.url("/rental-car/driver/orders?\(p.queryString)")
+                    let router = VatoAPIRouter.customPath(authToken: "", path: url, header: nil, params: nil, useFullPath: true)
+                    let network = NetworkRequester(provider: NetworkTokenProvider(token: FirebaseTokenHelper.instance.eToken.filterNil()))
+                    network.request(using: router,
+                                    decodeTo: OptionalMessageDTO<OrderContractData>.self,
+                                    method: .get,
+                                    encoding: JSONEncoding.default)
+                        .bind { (result) in
+                            switch result {
+                            case .success(let r):
+                                if r.fail == false {
+                                    guard let data = r.data else {
+                                        return
+                                    }
+                                    self.mCountContract = data.total ?? 0
+                                } else {
+                                    print(r.message ?? "")
+                                }
+                            case .failure(let e):
+                                print(e.localizedDescription)
+                            }
+                    }.disposed(by: disposeBag)
+    }
+    func countContract(completion: ((Int) -> ())?) {
+        self.$mCountContract.asObservable().bind { (value) in
+            completion?(value)
+        }.disposed(by: disposeBag)
+    }
         
 }
 

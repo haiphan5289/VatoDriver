@@ -8,10 +8,14 @@
 //  --------------------------------------------------------------
 
 import RIBs
+import RxSwift
+import RxCocoa
 
 protocol WTWithDrawConfirmInteractable: Interactable, WTWithDrawSuccessListener {
     var router: WTWithDrawConfirmRouting? { get set }
     var listener: WTWithDrawConfirmListener? { get set }
+    func processNapasPaymentSuccess()
+    func processNapasPaymentFailure(status: Int, message: String)
 }
 
 protocol WTWithDrawConfirmViewControllable: ViewControllable {
@@ -34,6 +38,7 @@ final class WTWithDrawConfirmRouter: ViewableRouter<WTWithDrawConfirmInteractabl
     
     /// Class's private properties.
     private let wtWithDrawSuccessBuildable: WTWithDrawSuccessBuildable
+    private lazy var disposeBag = DisposeBag()
 }
 // MARK: WTWithDrawConfirmRouting's members
 extension WTWithDrawConfirmRouter: WTWithDrawConfirmRouting {
@@ -51,6 +56,25 @@ extension WTWithDrawConfirmRouter: WTWithDrawConfirmRouting {
         let route = wtWithDrawSuccessBuildable.build(withListener: interactor, bankInfo: info)
         let segue = RibsRouting(use: route, transitionType: .push , needRemoveCurrent: false )
         perform(with: segue, completion: nil)
+    }
+    
+    func showTopupNapas(htmlString: String, redirectUrl: String?) {
+        TopUpNapasWebVC.loadWeb(on: self.viewController.uiviewController, title: "Thanh toán", type: .local(htmlString: htmlString, redirectUrl: redirectUrl))
+            .observeOn(MainScheduler.asyncInstance).subscribe {[weak self] e in
+                guard let wSelf = self else { return }
+                switch e {
+                case .next(let result):
+                    guard result != nil else {
+                        return
+                    }
+                    wSelf.interactor.processNapasPaymentSuccess()
+                case .error(let r):
+                    wSelf.interactor.processNapasPaymentFailure(status: -10001, message: r.localizedDescription)
+                default:
+                    break
+                }
+                
+        }.disposed(by: disposeBag)
     }
 
 }

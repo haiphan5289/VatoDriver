@@ -44,7 +44,7 @@
 @import FirebaseAnalytics;
 @import Masonry;
 @import CoreLocation;
-
+extern NSString *DriverWantToCancelTripNotification;
 @interface TripMapViewController () <MBSliderViewDelegate, ReceipViewDelegate, FCChatHeadsControllerDatasource, FCChatHeadsControllerDelegate, PackageInfoListener, ExpressSuccessListener, FoodReceivePackageWrapperProtocol>
 {
     BOOL isFirstTimeLoadMap;
@@ -150,9 +150,8 @@
 @property (weak, nonatomic) IBOutlet FCView *viewDigitalClock;
 @property (weak, nonatomic) IBOutlet UIView *vButtonDirection;
 @property (strong, nonatomic) UILabel *showTextSerivce;
-
 @property (weak, nonatomic) IBOutlet UILabel *lblTitleExpress;
-
+@property (assign, nonatomic) PaymentMethod currentMethod;
 @end
 
 @implementation TripMapViewController {
@@ -169,6 +168,7 @@
 
 - (void)setBooking:(FCBooking *)booking {
     _booking = booking;
+    _currentMethod = booking.info.payment;
     NSAssert(booking, @"Check logic");
     NSAssert(booking.info, @"Check info");
 }
@@ -478,6 +478,18 @@
         @strongify(self);
         [self closeShowService];
     }];
+    
+    if (self.booking.info.serviceId != 512) {
+        [[[[FCBookingService shareInstance] changePaymentMethod] deliverOn:[RACScheduler mainThreadScheduler]] subscribeNext:^(id x) {
+            @strongify(self);
+            FCBooking *book = [FCBookingService shareInstance].book;
+            [_tripMapInfoView updatePriceViewWithStarted:[self.bookingService isTripStarted: book] booking:book hideTarget:NO];
+            if ([book last].status >= BookStatusStarted) {
+                [_tripMapInfoView startTripWithItem:book];
+            } 
+            
+        }];
+    }
 }
 
 - (void) openShowService {
@@ -1286,7 +1298,7 @@
 - (void) startTrip
 {
     if (self.booking.info.endLat == 0 && self.booking.info.endLon == 0) {
-        UIAlertController* alert = [UIAlertController showAlertInViewController:self
+        [UIAlertController showAlertInViewController:self
                      withTitle:@""
                        message:@"Bạn cần phải chọn điểm đến"
              cancelButtonTitle:@"OK"
@@ -1297,6 +1309,22 @@
         return;
     }
     
+    [self playsound:@"success"];
+    
+    // update book status
+    @weakify(self);
+    [self.bookingService updateBookStatus:BookStatusStarted complete:^(BOOL success) {
+        @strongify(self);
+        if (success) {
+            [self updateUIInTrip];
+        } else {
+            [_sliderView resetDefaultState];
+        }
+    }];
+    
+}
+
+- (void) updateUIInTrip {
     hasStartTrip = YES;
     
     [IndicatorUtils showWithAllowDismiss:NO];
@@ -1309,12 +1337,7 @@
         markerStart.icon = [UIImage imageNamed:@"marker-start"];
     }
     
-    [self playsound:@"success"];
-    
-    // update book status
-    [self.bookingService updateBookStatus:BookStatusStarted complete:nil];
-    
-    [self updateUIByTripStatus: TRUE];
+    [self updateUIByTripStatus:YES];
 
     // remove current polyline
     if (polyline) {
@@ -1432,6 +1455,7 @@
     // listen change destination
     [[AddDestinationCommunication shared] listenChangeDestination];
     [_tripMapInfoView useLast];
+    
 }
 
 
@@ -1752,7 +1776,7 @@
 }
 
 - (void) updatePriceView: (BOOL) started {
-    [_tripMapInfoView updatePriceViewWithStarted:started booking:self.booking hideTarget:[FirebaseHelper shareInstance].appConfigure.booking_configure.hide_destination];
+    [_tripMapInfoView updatePriceViewWithStarted:started booking:self.booking hideTarget:NO];
     
     self.lblService.text = [NSString stringWithFormat:@" %@ ", [self.booking.info localizeServiceName]];
     

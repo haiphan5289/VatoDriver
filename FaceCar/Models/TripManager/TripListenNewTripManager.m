@@ -133,7 +133,7 @@ NSDate *expiredReceiveTrip;
 - (RACSignal *)findTrip:(NSString *)tripId {
    FIRDocumentReference *tripRef = [[FIRFirestore firestore] documentWithPath:[NSString stringWithFormat:@"Trip/%@", tripId]];
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        [tripRef getDocumentWithCompletion:^(FIRDocumentSnapshot * _Nullable snapshot, NSError * _Nullable error) {
+        [tripRef getDocumentWithSource:FIRFirestoreSourceServer completion:^(FIRDocumentSnapshot * _Nullable snapshot, NSError * _Nullable error) {
             if (error) {
                 [subscriber sendError:error];
                 return;

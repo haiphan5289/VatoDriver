@@ -263,6 +263,12 @@ static const CGFloat gradientDimAlpha = 0.5;
 }
 
 #pragma mark - UISlider actions
+- (void)resetDefaultState {
+    [_slider setValue:0.0 animated: NO];
+    _label.alpha = 1.0;
+    [_label setAnimated:YES];
+}
+
 - (void) sliderUp:(UISlider *)sender {
     
 	if (_sliding) {
@@ -275,9 +281,7 @@ static const CGFloat gradientDimAlpha = 0.5;
                 [_delegate sliderDidSlide:self shouldResetState:&resetState];
                 if (resetState)
                 {
-                    [_slider setValue:0.0 animated: NO];
-                    _label.alpha = 1.0;
-                    [_label setAnimated:YES];
+                    [self resetDefaultState];
                 }
             }
         }

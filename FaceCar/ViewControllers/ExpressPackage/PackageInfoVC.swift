@@ -15,7 +15,7 @@ import SVProgressHUD
     func packageInfoDidSelectContinue(sender: PackageInfoVC)
 }
 
-class PackageInfoVC: UIViewController {
+final class PackageInfoVC: UIViewController {
     @objc weak var listener: PackageInfoListener?
     
     @IBOutlet private weak var sliderViewContainer: UIView!
@@ -43,6 +43,11 @@ class PackageInfoVC: UIViewController {
                 self?.userNameLabel.text = user.getDisplayName()
             }
         }).disposed(by: disposeBag)
+        
+        self.bookingService?.rx.observe(FCBooking.self, #keyPath(FCBookingService.book)).bind(onNext: weakify({ (book, wSelf) in
+            guard let b = book else { return }
+            wSelf.controllerDetail?.bookInfo = b.info
+        })).disposed(by: disposeBag)
         
         self.sliderView = MBSliderView.createDefautTemplate()
         self.sliderView.delegate = self
@@ -99,6 +104,7 @@ extension PackageInfoVC: MBSliderViewDelegate {
         if let book = self.bookingService?.book,
             let tripId = book.info.tripId {
             LoadingManager.instance.show()
+            UIApplication.shared.beginIgnoringInteractionEvents()
             FirebaseUploadImage.upload(listImage, withPath: tripId) {[weak self] (urls, error) in
                 DispatchQueue.main.async {
                     if error != nil,
@@ -112,20 +118,35 @@ extension PackageInfoVC: MBSliderViewDelegate {
                             component?.queryItems = queries
                             return component?.url
                         }
-                        self?.bookingService?.updateInfoReceiveImages(resultURLs.compactMap({ $0.absoluteString }))
-                        self?.bookingService?.updateLastestBookingInfo(self?.bookingService?.book, block: { _ in
-                            self?.bookingService?.updateBookStatus(Int(BookStatusDeliveryReceivePackageSuccess.rawValue), complete: { (isSucess) in
-                                if let wself = self {
-                                    self?.listener?.packageInfoDidSelectContinue(sender: wself)
-                                }
-                                self?.dismiss(animated: false, completion: nil)
-                            })
-                        })
+                        self?.updateURLs(resultURLs.compactMap({ $0.absoluteString }))
                     }
+                    UIApplication.shared.endIgnoringInteractionEvents()
                     LoadingManager.instance.dismiss()
                 }
             }
         }
+    }
+    
+    private func updateURLs(_ urls: [String]) {
+        self.bookingService?.updateInfoReceiveImages(urls)
+        let book = self.bookingService?.book
+        self.bookingService?.updateLastestBookingInfo(book, block: { [weak self]_ in
+            guard let wSelf = self else {
+                return
+            }
+            wSelf.updateStatus(Int(BookStatusDeliveryReceivePackageSuccess.rawValue))
+        })
+    }
+    
+    private func updateStatus(_ status: Int) {
+        self.bookingService?.updateBookStatus(status, complete: { [weak self] (success) in
+            guard success else { return }
+            guard let wSelf = self else {
+                return
+            }
+            wSelf.listener?.packageInfoDidSelectContinue(sender: wSelf)
+            wSelf.dismiss(animated: false, completion: nil)
+        })
     }
 }
 

@@ -26,6 +26,7 @@
 #import "FCLabel.h"
 #import "FCBalance.h"
 #import "APICall.h"
+#import "PTSMessagingCell.h"
 
 extern NSString *_Nonnull const zpTransactionUpdateNotification;
 extern NSString *_Nonnull const topupSuccessNotification;

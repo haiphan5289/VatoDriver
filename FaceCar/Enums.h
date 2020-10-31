@@ -124,7 +124,9 @@ typedef enum : NSInteger {
     PaymentMethodAll = 2,
     PaymentMethodVisa = 3,
     PaymentMethodMastercard = 4,
-    PaymentMethodATM = 5
+    PaymentMethodATM = 5,
+    PaymentMethodMomo = 6,
+    PaymentMethodZaloPay = 7
 } PaymentMethod;
 
 typedef enum : NSInteger {

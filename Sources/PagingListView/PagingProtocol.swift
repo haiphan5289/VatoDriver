@@ -28,7 +28,7 @@ extension PagingNextProtocol {
     }
     
     var first: Bool {
-        return page <= 1
+        return page <= 0
     }
 }
 
@@ -49,7 +49,7 @@ struct ResponsePaging<T: Codable>: Codable {
 }
 
 struct Paging: PagingNextProtocol {
-    static let `default` = Paging(page: 0, canRequest: true, size: 30)
+    static let `default` = Paging(page: -1, canRequest: true, size: 30)
     
     var page: Int
     var size: Int

@@ -44,6 +44,7 @@
 #define Height_View_Auto_Receive_Trip 74
 #define Height_View_Action 200
 @import Masonry;
+extern NSString *DriverWantToCancelTripNotification;
 @interface HomeViewController () <GMSMapViewDelegate, JTMaterialSwitchDelegate, FCPromotionPopupViewDelegate, HandlerPushProtocol, ShortcutDelegateProtocol, ListMarketingPointViewProtocol>
 {
     GMSMarker* markerStart;
@@ -81,6 +82,7 @@
 @property (strong, nonatomic) TOOrderWrapperObjC *routeTOOrderWrapperObjC;
 @property (weak, nonatomic) ListMarketingPointView *listMarketingPointView;
 @property (weak, nonatomic) UIAlertView *alertReadyQueue;
+@property (nonatomic) CarContractObjcWrapper *carContractObjcWrapper;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraintDigitalBtn;
 @property (nonatomic) NSTimer *timerReadyQueue;
 @end
@@ -90,19 +92,30 @@
 }
 
 - (void)loadView {
+    [[VatoLocationManager shared] loadLenghtGeohash];
     [super loadView];
     [[VatoDriverUpdateLocationService shared] loadConfig];
     [[NotificationPushService instance] registerWithHandler:self];
     [[FirebaseTokenHelper instance] startUpdate];
     [[FireBaseTimeHelper default] startUpdate];
+    [[BannerHelper instance] requestBanner];
 }
 
 - (void)showTripDigital {
     [self touchTripClock: nil];
 }
 
+- (void)listenCancel {
+    @weakify(self);
+    [[[NSNotificationCenter defaultCenter] rac_addObserverForName:DriverWantToCancelTripNotification object:nil] subscribeNext:^(id x) {
+        @strongify(self);
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self listenCancel];
     self.digitalButton.hidden = YES;
     self.heightConstraintViewAction.constant = 0;
     self.view.backgroundColor = GREEN_COLOR;
@@ -172,8 +185,7 @@
             [[TOManageCommunication shared] startObserWhenFinishTrip];
         }];
     }];
-    
-    self.shorcut = [[VatoShorcutView alloc] initWithNamed:@"ic_vato_taxi_tabbar"];
+    self.shorcut = [[VatoShorcutView alloc] initWithDescription:@"Hỗ trợ"];
     self.routeShorcut = [[ShorcurtWrapperObjC alloc] initWith:self];
     [self.view addSubview:_shorcut];
     
@@ -197,16 +209,71 @@
             [[TOManageCommunication shared] stop];
         }
     }];
+    [[TOManageCommunication shared] fireStoreNotify];
+    UIButton *carContract = [[UIButton alloc] initWithFrame:CGRectZero];
+    carContract.clipsToBounds = YES;
+    carContract.layer.cornerRadius = 20;
+    carContract.backgroundColor = [UIColor whiteColor];
+    [carContract.titleLabel setFont:[UIFont systemFontOfSize:16 weight: UIFontWeightMedium]];
+    [carContract setTitle:@" Xe hợp đồng " forState:(UIControlStateNormal)];
+    [carContract setTitleColor: [UIColor colorWithRed:238/255.0 green:82/255.0 blue:34/255.0 alpha:1.0] forState:(UIControlStateNormal)];
+    [carContract addTarget:self action:@selector(touchCarContract) forControlEvents:UIControlEventTouchUpInside];
+    [carContract setImage:[UIImage imageNamed:@"ic_vato_contract"] forState:(UIControlStateNormal)];
+    [self.view addSubview:carContract];
+    [carContract mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.mas_equalTo(_shorcut.mas_centerY);
+        make.left.mas_equalTo(self.view.mas_left).inset(16);
+        make.size.mas_equalTo(CGSizeMake(143, 40));
+    }];
+    
+    UILabel *lbContract = [[UILabel alloc] initWithFrame:CGRectZero];
 
+    [TOManageCommunication.shared countContractWithCompletion:^(NSInteger count) {
+        if (count > 0) {
+            lbContract.text = [NSString stringWithFormat:@"  %d   ", count];
+        } else {
+            lbContract.text = @"";
+        }
+    }];
+    
+    lbContract.textColor = [UIColor whiteColor];
+    lbContract.backgroundColor = [UIColor colorWithRed:238/255.0 green:82/255.0 blue:34/255.0 alpha:1.0];
+    lbContract.font = [UIFont systemFontOfSize:10 weight: UIFontWeightBold];
+    [self.view addSubview:lbContract];
+    [lbContract mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.top.mas_equalTo(carContract);
+    }];
+    lbContract.clipsToBounds = YES;
+    lbContract.layer.cornerRadius = 6;
+    
+    UIButton *currentLocation = [[UIButton alloc] initWithFrame:CGRectZero];
+    [currentLocation addTarget:self action:@selector(touchCurrentLocation) forControlEvents:UIControlEventTouchUpInside];
+    [currentLocation setImage:[UIImage imageNamed:@"location"] forState:(UIControlStateNormal)];
+    [self.view addSubview:currentLocation];
+    [currentLocation mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.mas_equalTo(carContract.mas_top);
+        make.left.mas_equalTo(self.view.mas_left);
+        make.size.mas_equalTo(CGSizeMake(70, 70));
+    }];
+    
+    
+    
     [[ConfigManager shared] getRemoteConfigDigitalTypeWithCompletion:^(BOOL isDigital) {
         if (isDigital) {
             [VatoPermission.shared permissonTaxiWithUid:user.uid completion:^(BOOL permission) {
                 @strongify(self);
                 if (permission) {
                     [self.digitalButton setHidden:NO];
+                    [currentLocation mas_updateConstraints:^(MASConstraintMaker *make) {
+                        make.bottom.mas_equalTo(carContract.mas_top).inset(40);
+                    }];
                 } else {
                     [self.digitalButton setHidden:YES];
+                    [currentLocation mas_updateConstraints:^(MASConstraintMaker *make) {
+                        make.bottom.mas_equalTo(carContract.mas_top);
+                    }];
                 }
+                [self.view layoutIfNeeded];
             }];
         } else {
             dispatch_async(dispatch_get_main_queue(), ^(void){
@@ -234,7 +301,7 @@
     self.bottomConstraintDigitalBtn.constant = -30;
     CGFloat paddingShorcut = 20;
     // banner
-    UIImageView *imageView = [BannerHelper loadFooterBanner];
+    UIView *imageView = [[BannerHelper instance] loadFooterBanner];
     if (imageView != nil) {
         [self.view addSubview:imageView];
         [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -256,23 +323,14 @@
     [_shorcut mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.mas_equalTo(-11);
          make.bottom.mas_equalTo(-paddingShorcut);
-        make.size.mas_equalTo(CGSizeMake(50, 66));
+        make.size.mas_equalTo(CGSizeMake(70, 70));
     }];
-    
+    self.shorcut.layer.cornerRadius = 35;
     [[_shorcut rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         @strongify(self);
         [self showShorcut];
     }];
     
-    UIButton *currentLocation = [[UIButton alloc] initWithFrame:CGRectZero];
-    [currentLocation addTarget:self action:@selector(touchCurrentLocation) forControlEvents:UIControlEventTouchUpInside];
-    [currentLocation setImage:[UIImage imageNamed:@"location"] forState:(UIControlStateNormal)];
-    [self.view addSubview:currentLocation];
-    [currentLocation mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.mas_equalTo(_shorcut.mas_centerY);
-        make.left.mas_equalTo(self.view.mas_left);
-        make.size.mas_equalTo(CGSizeMake(70, 70));
-    }];
     
     self.navigationController.navigationBarHidden = YES;
     
@@ -353,6 +411,7 @@
         @strongify(self);
         [self checkOnline];
     }];
+
 }
 
 - (void)validateStateDriver {
@@ -377,6 +436,7 @@
     if (self.viewModel) {
         [self getAutoAccept];
     }
+    [[TOManageCommunication shared] fireStoreNotify];
 }
 
 - (void) viewWillDisappear:(BOOL)animated
@@ -1191,6 +1251,12 @@
 }
 
 #pragma mark - Handler actions
+
+- (void) touchCarContract {
+    self.carContractObjcWrapper = [[CarContractObjcWrapper alloc] initWith:self];
+//    [self.carContractObjcWrapper presentVC];
+    [self.carContractObjcWrapper presentListCar];
+}
 
 - (void) touchCurrentLocation {
     CLLocation *location = GoogleMapsHelper.shareInstance.currentLocation;

@@ -10,8 +10,8 @@ import UIKit
 import Kingfisher
 import RxSwift
 
-class FoodItemView: UIView {
-
+class FoodItemView: UIView, EcomDisplayProductProtocol {
+    typealias Value = OrderItem
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -23,13 +23,17 @@ class FoodItemView: UIView {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subTitleLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
+    
+    var lblNote: UILabel? {
+        return subTitleLabel
+    }
 
     private lazy var disposeBag = DisposeBag()
     
     func display(item: OrderItem) {
         numberLabel.text = "\(item.qty ?? 1)x"
         titleLabel.text = item.name
-        priceLabel.text = item.finalPrice?.currency
-        subTitleLabel.text = item.description
+        priceLabel.text = item.basePriceIncltaxFinal?.currency
+        displayDetail(item: item)
     }
 }
